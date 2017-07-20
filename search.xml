@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+    
+    <entry>
+      <title><![CDATA[test]]></title>
+      <url>/2017/07/20/hi/</url>
+      <content type="html"><![CDATA[<h1 id="大标题"><a href="#大标题" class="headerlink" title="大标题"></a>大标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+<blockquote>
+<p>区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容区块内容</p>
+</blockquote>
+<p>输出html为：</p>
+<p></p><h1>A First Level Header</h1><p></p>
+<p></p><h2>A Second Level Header</h2><p></p>
+<p>Now is the time for all good men to come to<br>the aid of their country. This is just a<br>regular paragraph.</p><br><p>The quick brown fox jumped over the lazy<br>dog’s back.</p><br><h3>Header 3</h3><br><blockquote><br><p>This is a blockquote.</p><br><p>This is the second paragraph in the blockquote.</p><br><h2>This is an H2 in a blockquote</h2><br></blockquote><br><br>使用型号和底线来标记需要强调的区段<br>Some of these words <em>are emphasized</em>.<br>Some of these words <em>are emphasized also</em>.<br>Use two asterisks for <strong>strong emphasis</strong>.<br>Or, if you prefer, <strong>use two underscores instead</strong>.<br><br>输出html为：<br><p>Some of these words <em>are emphasized</em>.<br>Some of these words <em>are emphasized also</em>.</p><br><p>Use two asterisks for <strong>strong emphasis</strong>.<br>Or, if you prefer, <strong>use two underscores instead</strong>.</p>
+
+<p>无序列表使用星号、加号和减号来做为列表的项目标记，这些符号是都可以使用的，使用星号：</p>
+<ul>
+<li>Candy.</li>
+<li>Gum.</li>
+<li>Booze.</li>
+</ul>
+<ul>
+<li>Candy.</li>
+<li>Gum.</li>
+<li>Booze.</li>
+</ul>
+<ul>
+<li>Candy.</li>
+<li>Gum.</li>
+<li>Booze.</li>
+</ul>
+<p>都会输出html为：</p>
+<ul><br><li>Candy.</li><br><li>Gum.</li><br><li>Booze.</li><br></ul>
+
+<p>有序的列表则是使用一般的数字接着一个英文句点作为项目标记：</p>
+<ol>
+<li>Red</li>
+<li>Green</li>
+<li>Blue</li>
+</ol>
+<p>输出html为：</p>
+<ol><br><li>Red</li><br><li>Green</li><br><li>Blue</li><br></ol>
+
+<p>Markdown 支援两种形式的链接语法： 行内 和 参考 两种形式，两种都是使用角括号来把文字转成链接。<br>This is an <a href="http://example.com/" target="_blank" rel="external">example link</a>.</p>
+<p>在一般的段落文字中，你可以使用反引号 ` 来标记代码区段，区段内的 &amp;、&lt; 和 &gt; 都会被自动的转换成 HTML 实体，这项特性让你可以很容易的在代码区段内插入 HTML 码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.shopcart</span></div><div class="line">    <span class="selector-tag">position</span>: <span class="selector-tag">fixed</span></div><div class="line">    <span class="selector-tag">left</span>: 0</div><div class="line">    <span class="selector-tag">bottom</span>: 0</div><div class="line">    <span class="selector-tag">z-index</span>: 50</div><div class="line">    <span class="selector-tag">width</span>: 100%</div><div class="line">    <span class="selector-tag">height</span>: 48<span class="selector-tag">px</span></div><div class="line">    <span class="selector-class">.content</span></div><div class="line">      <span class="selector-tag">display</span>: <span class="selector-tag">flex</span></div><div class="line">      <span class="selector-tag">background</span>: <span class="selector-id">#141d27</span></div><div class="line">      <span class="selector-tag">font-size</span>: 0</div><div class="line">      <span class="selector-tag">color</span>: <span class="selector-tag">rgba</span>(255, 255, 255, 0<span class="selector-class">.4</span>)</div><div class="line">      <span class="selector-class">.content-left</span></div><div class="line">        <span class="selector-tag">flex</span>: 1</div><div class="line">        <span class="selector-class">.logo-wrapper</span></div><div class="line">          <span class="selector-tag">display</span>: <span class="selector-tag">inline-block</span></div><div class="line">          <span class="selector-tag">position</span>: <span class="selector-tag">relative</span></div><div class="line">          <span class="selector-tag">top</span>: <span class="selector-tag">-10px</span></div><div class="line">          <span class="selector-tag">margin</span>: 0 12<span class="selector-tag">px</span></div><div class="line">          <span class="selector-tag">padding</span>: 6<span class="selector-tag">px</span></div><div class="line">          <span class="selector-tag">width</span>: 56<span class="selector-tag">px</span></div><div class="line">          <span class="selector-tag">height</span>: 56<span class="selector-tag">px</span></div><div class="line">          <span class="selector-tag">box-sizing</span>: <span class="selector-tag">border-box</span></div><div class="line">          <span class="selector-tag">vertical-align</span>: <span class="selector-tag">top</span></div><div class="line">          <span class="selector-tag">border-radius</span>: 50%</div><div class="line">          <span class="selector-tag">background</span>: <span class="selector-id">#141d27</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">computed: &#123;</div><div class="line">      totalPrice() &#123;</div><div class="line">        <span class="keyword">let</span> total = <span class="number">0</span>;</div><div class="line">        <span class="keyword">this</span>.selectFoods.forEach(<span class="function">(<span class="params">food</span>) =&gt;</span> &#123;</div><div class="line">          total += food.price * food.count;</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">return</span> total;</div><div class="line">      &#125;,</div><div class="line">      totalCount() &#123;</div><div class="line">        <span class="keyword">let</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">this</span>.selectFoods.forEach(<span class="function">(<span class="params">food</span>) =&gt;</span> &#123;</div><div class="line">          count += food.count;</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">return</span> count;</div></pre></td></tr></table></figure>]]></content>
+      
+        <categories>
+            
+            <category> css </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> css </tag>
+            
+            <tag> javascript </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>/2017/07/17/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+      
+        <categories>
+            
+            <category> javascript </category>
+            
+        </categories>
+        
+        
+    </entry>
+    
+  
+  
+    
+    <entry>
+      <title></title>
+      <url>/about/about.html</url>
+      <content type="html"><![CDATA[<p>姓名：<br>学校：<br>专业：</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+  
+</search>
