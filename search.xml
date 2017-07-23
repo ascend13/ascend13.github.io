@@ -3,6 +3,41 @@
   
     
     <entry>
+      <title><![CDATA[闭包理解与总结]]></title>
+      <url>/2017/07/23/%E9%97%AD%E5%8C%85%E7%90%86%E8%A7%A3%E4%B8%8E%E6%80%BB%E7%BB%93/</url>
+      <content type="html"><![CDATA[<p>闭包是JavaScript比较重要同时也是不好理解的一个概念，从很早就翻看各种博文以及在书上看相关的内容，但总是一知半解，随着经验的积累，现在对闭包又有了新的认识，在此总结。<br>先看一下各种对闭包的定义的说法，在《JavaScript高级程序设计》中的定义为：</p>
+<blockquote>
+<p>闭包是指有权访问另一个函数作用域中的变量的函数</p>
+</blockquote>
+<p>很好理解，但如果是这么简单就不用去总结了<br>《你不知道的JavaScript》：</p>
+<blockquote>
+<p>当函数可以记住并访问所在的词法作用域时，就产生了闭包，即使函数是在当前词法作用域之外执行</p>
+</blockquote>
+<p>作用域主要有两种，一种最为普遍被大多数编程语言采用的就是词法作用域，比如JavaScript，词法作用域就是定义在词法阶段的作用域，即由你在写代码时将变量和块作用域写在哪里决定的，另一种叫做动态作用域，Bash脚本等在使用。<br>这里的定义就不太好理解，但其实上和上面的定义也很相似。</p>
+<p>《javascript权威指南》 （第六版）第8章第6节</p>
+<blockquote>
+<p>从技术的角度讲，所有的JavaScript函数都是闭包：它们都是对象，它们都关联到作用域链</p>
+</blockquote>
+<p>所有的函数都是闭包因为有一个很大的window全局对象，你写的函数外部有一个默认的全局函数，你所有写的函数都在这个函数内部。<br>从广义上来讲是这样，狭义闭包即上面js高程定义。闭包的三大特性：1.函数嵌套函数 2.函数内部可以引用外部的参数和变量 3.参数和变量不会被垃圾回收机制回收<br>看一个例子<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(a);<span class="comment">//2</span></div><div class="line">  &#125;</div><div class="line">  bar();</div><div class="line">&#125;</div><div class="line">foo();</div></pre></td></tr></table></figure></p>
+<p>从技术上来讲是闭包，但这个例子并没有闭包的特性，foo()执行后，foo()内部的执行环境被销毁。<br>下面是一个典型闭包：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        <categories>
+            
+            <category> javascript </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> javascript </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[test]]></title>
       <url>/2017/07/20/hi/</url>
       <content type="html"><![CDATA[<h1 id="大标题"><a href="#大标题" class="headerlink" title="大标题"></a>大标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
@@ -68,16 +103,16 @@
   
     
     <entry>
+      <title><![CDATA[tags]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title></title>
       <url>/about/about.html</url>
       <content type="html"><![CDATA[<p>姓名：<br>学校：<br>专业：</p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[tags]]></title>
-      <url>/tags/index.html</url>
-      <content type="html"></content>
     </entry>
     
   
