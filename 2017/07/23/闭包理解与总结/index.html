@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="Sun Jul 23 2017 15:03:12 GMT+0800" />
-        <meta property="article:modified_time" content="Sun Jul 23 2017 18:27:42 GMT+0800" />
+        <meta property="article:modified_time" content="Sun Jul 23 2017 18:50:15 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "闭包理解与总结",
     "url": "http://yoursite.com/2017/07/23/闭包理解与总结/index.html",
     "datePublished": "Sun Jul 23 2017 15:03:12 GMT+0800",
-    "dateModified": "Sun Jul 23 2017 18:27:42 GMT+0800",
+    "dateModified": "Sun Jul 23 2017 18:50:15 GMT+0800",
     "description": "life",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -500,10 +500,7 @@
 <p>所有的函数都是闭包因为有一个很大的window全局对象，你写的函数外部有一个默认的全局函数，你所有写的函数都在这个函数内部。<br>从广义上来讲是这样，狭义闭包即上面js高程定义。闭包的三大特性：1.函数嵌套函数 2.函数内部可以引用外部的参数和变量 3.参数和变量不会被垃圾回收机制回收<br>看一个例子<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(a);<span class="comment">//2</span></div><div class="line">  &#125;</div><div class="line">  bar();</div><div class="line">&#125;</div><div class="line">foo();</div></pre></td></tr></table></figure></p>
 <p>从技术上来讲是闭包，但这个例子并没有闭包的特性，foo()执行后，foo()内部作用域被销毁。<br>下面是一个典型闭包：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(a);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> bar</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> baz = foo();</div><div class="line">baz();</div></pre></td></tr></table></figure></p>
 <p>这里foo()内部返回bar()函数，函数的特别之处在于可以创建一个独立的作用域，第九行foo()执行返回值复制给变量baz,但bar()并没有被执行，foo()执行后按常理内部作用域被销毁，但由于返回的bar内仍然在引用变量a,因此a不会被销毁，即使执行baz()后bar内的上下文环境中的a活动对象被释放，但foo()内的仍然保留。第一个例子会被销毁的原因是闭包在函数内调用过，它的生命周期会随着父级函数结束被释放。</p>
-<p>如果还是觉得太麻烦可以看以上两种形式的演化版</p>
-<figure class="half"><br>    <img src="http://photo.weibo.com/3661792385/photos/large/photo_id/4132736410497336/album_id/4132736272064557"><br>    <img src="http://http://photo.weibo.com/3661792385/photos/detail/photo_id/4132736410497336#4132736410497336"><br></figure>
-
-<p><img src="http://photo.weibo.com/3661792385/photos/large/photo_id/4132736410497336/album_id/4132736272064557" alt="Alt text"></p>
+<p>如果还是觉得太麻烦可以看以上两种形式的演化版<br><img src="http://photo.weibo.com/3661792385/photos/large/photo_id/4132736410497336/album_id/4132736272064557" alt="Alt text"></p>
 
     
 
