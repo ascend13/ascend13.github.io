@@ -22,9 +22,9 @@
 <p>从技术上来讲是闭包，但这个例子并没有闭包的特性，foo()执行后，foo()内部作用域被销毁。<br>下面是一个典型闭包：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(a);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> bar</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> baz = foo();</div><div class="line">baz();</div></pre></td></tr></table></figure></p>
 <p>这里foo()内部返回bar()函数，函数的特别之处在于可以创建一个独立的作用域，第九行foo()执行返回值复制给变量baz,但bar()并没有被执行，foo()执行后按常理内部作用域被销毁，但由于返回的bar内仍然在引用变量a,因此a不会被销毁，即使执行baz()后bar内的上下文环境中的a活动对象被释放，但foo()内的仍然保留。第一个例子会被销毁的原因是闭包在函数内调用过，它的生命周期会随着父级函数结束被释放。</p>
 <p>如果还是觉得太麻烦可以看以上两种形式的演化版</p>
-<figure class="half"><br>    <img src="http://http://photo.weibo.com/3661792385/photos/detail/photo_id/4132736410497336#4132736372748118"><br>    <img src="http://http://photo.weibo.com/3661792385/photos/detail/photo_id/4132736410497336#4132736410497336"><br></figure>
+<figure class="half"><br>    <img src="http://photo.weibo.com/3661792385/photos/large/photo_id/4132736410497336/album_id/4132736272064557"><br>    <img src="http://http://photo.weibo.com/3661792385/photos/detail/photo_id/4132736410497336#4132736410497336"><br></figure>
 
-<p><img src="http://photo.weibo.com/3661792385/photos/detail/photo_id/4132736410497336#4132736410497336" alt="Alt text"></p>
+<p><img src="http://photo.weibo.com/3661792385/photos/large/photo_id/4132736410497336/album_id/4132736272064557" alt="Alt text"></p>
 ]]></content>
       
         <categories>
