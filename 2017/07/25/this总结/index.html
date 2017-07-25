@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="Tue Jul 25 2017 16:21:05 GMT+0800" />
-        <meta property="article:modified_time" content="Tue Jul 25 2017 18:21:37 GMT+0800" />
+        <meta property="article:modified_time" content="Tue Jul 25 2017 18:25:54 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "this总结",
     "url": "http://yoursite.com/2017/07/25/this总结/index.html",
     "datePublished": "Tue Jul 25 2017 16:21:05 GMT+0800",
-    "dateModified": "Tue Jul 25 2017 18:21:37 GMT+0800",
+    "dateModified": "Tue Jul 25 2017 18:25:54 GMT+0800",
     "description": "life",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -331,7 +331,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">1.</span> <span class="post-toc-text">一.优先级：new绑定>显式绑定>隐式绑定>默认绑定</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.new绑定</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#undefined"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2.显式绑定</span></a></li></ol></li></ol>
+        
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -476,15 +476,14 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <p>首先，this的指向问题可以用一句话总结就是：<strong>this总是指向调用该函数的对象</strong>，也就是说this指向谁与函数声明的位置没有关系，只与调用的位置有关。这是判断this的一个大体原则，而具体的小原则按照优先级的不同大致可以分为以下几点：</p>
-<p></p><h2>一.优先级：new绑定&gt;显式绑定&gt;隐式绑定&gt;默认绑定</h2><p></p>
-<p></p><h3>1.new绑定</h3><br>new方式是优先级最高的一种调用方式，也就是说只要是出现new方式来调用一个函数，this肯定会指向new调用函数新创建的对象。<p></p>
+<p><font size="3"><strong>一.优先级：new绑定&gt;显式绑定&gt;隐式绑定&gt;默认绑定</strong></font><br><strong>1.new绑定</strong><br>new方式是优先级最高的一种调用方式，也就是说只要是出现new方式来调用一个函数，this肯定会指向new调用函数新创建的对象。</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token function">thisTo</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">{</span>
  <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token operator">=</span>a<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">var</span> data<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">thisTo</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//在这里进行了new绑定</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//2</span>
 </code></pre>
-<p></p><h3>2.显式绑定</h3><br>显示绑定指的是通过call()和apply()方法对函数进行的调用，对this影响的优先级仅次于new绑定。<p></p>
+<p><strong>2.显式绑定</strong><br>显示绑定指的是通过call()和apply()方法对函数进行的调用，对this影响的优先级仅次于new绑定。</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>

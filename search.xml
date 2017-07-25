@@ -6,15 +6,14 @@
       <title><![CDATA[this总结]]></title>
       <url>/2017/07/25/this%E6%80%BB%E7%BB%93/</url>
       <content type="html"><![CDATA[<p>首先，this的指向问题可以用一句话总结就是：<strong>this总是指向调用该函数的对象</strong>，也就是说this指向谁与函数声明的位置没有关系，只与调用的位置有关。这是判断this的一个大体原则，而具体的小原则按照优先级的不同大致可以分为以下几点：</p>
-<p></p><h2>一.优先级：new绑定&gt;显式绑定&gt;隐式绑定&gt;默认绑定</h2><p></p>
-<p></p><h3>1.new绑定</h3><br>new方式是优先级最高的一种调用方式，也就是说只要是出现new方式来调用一个函数，this肯定会指向new调用函数新创建的对象。<p></p>
+<p><font size="3"><strong>一.优先级：new绑定&gt;显式绑定&gt;隐式绑定&gt;默认绑定</strong></font><br><strong>1.new绑定</strong><br>new方式是优先级最高的一种调用方式，也就是说只要是出现new方式来调用一个函数，this肯定会指向new调用函数新创建的对象。</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token function">thisTo</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">{</span>
  <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token operator">=</span>a<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">var</span> data<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">thisTo</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//在这里进行了new绑定</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//2</span>
 </code></pre>
-<p></p><h3>2.显式绑定</h3><br>显示绑定指的是通过call()和apply()方法对函数进行的调用，对this影响的优先级仅次于new绑定。<p></p>
+<p><strong>2.显式绑定</strong><br>显示绑定指的是通过call()和apply()方法对函数进行的调用，对this影响的优先级仅次于new绑定。</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -355,9 +354,9 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
         
         <tags>
             
-            <tag> css </tag>
-            
             <tag> javascript </tag>
+            
+            <tag> css </tag>
             
         </tags>
         
