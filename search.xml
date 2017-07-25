@@ -6,19 +6,118 @@
       <title><![CDATA[this总结]]></title>
       <url>/2017/07/25/this%E6%80%BB%E7%BB%93/</url>
       <content type="html"><![CDATA[<p>首先，this的指向问题可以用一句话总结就是：<strong>this总是指向调用该函数的对象</strong>，也就是说this指向谁与函数声明的位置没有关系，只与调用的位置有关。这是判断this的一个大体原则，而具体的小原则按照优先级的不同大致可以分为以下几点：</p>
-<p><font size="3"><strong>一.优先级：new绑定&gt;显式绑定&gt;隐式绑定&gt;默认绑定</strong></font><br><strong>1.new绑定</strong><br>new方式是优先级最高的一种调用方式，也就是说只要是出现new方式来调用一个函数，this肯定会指向new调用函数新创建的对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function() thisTo(a)&#123;</div><div class="line"> this.a=a;</div><div class="line">&#125;</div><div class="line">var data=new thisTo(2); //在这里进行了new绑定</div><div class="line">console.log(data.a);  //2</div></pre></td></tr></table></figure></p>
-<p><strong>2.显式绑定</strong><br>显示绑定指的是通过call()和apply()方法对函数进行的调用，对this影响的优先级仅次于new绑定。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function thisTo()&#123;</div><div class="line">   console.log(this.a);</div><div class="line">&#125;</div><div class="line">var data=&#123;</div><div class="line">    a:2</div><div class="line">&#125;; </div><div class="line">thisTo.call(data));  //2</div></pre></td></tr></table></figure></p>
-<p><strong>3.隐式绑定</strong><br>隐式绑定是指通过对象的属性进行添加，从而调用this所在函数，该方式的优先级在显示绑定之后。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function thisTo()&#123;</div><div class="line">   console.log(this.a);</div><div class="line">&#125;</div><div class="line">var data=&#123;</div><div class="line">    a:2,</div><div class="line">    foo:thisTo //通过属性引用this所在函数 </div><div class="line">&#125;;</div><div class="line">data.foo(); //2</div></pre></td></tr></table></figure></p>
-<p><strong>4.默认绑定</strong><br>默认绑定是指当上面这三条绑定规则都不符合时采用的绑定规则，默认绑定会把this默认绑定到全局对象中，是优先级最低的绑定规则<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function thisTo()&#123;</div><div class="line">   console.log(this.a);</div><div class="line">&#125;</div><div class="line">var a=2; //a是全局对象的一个同名属性</div><div class="line">thisTo(); //2</div></pre></td></tr></table></figure></p>
-<p><font size="3"><strong>二.this绑定的特殊情况</strong></font><br><strong>1.隐式丢失</strong><br>当进行隐式绑定时，如果进行一次引用赋值或者传参操作，会造成this的丢失，从而最后将this绑定到全局对象中去。<br><em>引用赋值丢失</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function thisTo()&#123;</div><div class="line">   console.log(this.a);</div><div class="line">&#125;</div><div class="line">var data=&#123;</div><div class="line">    a:2,</div><div class="line">    foo:thisTo //通过属性引用this所在函数 </div><div class="line">&#125;;</div><div class="line">var a=3;//全局属性</div><div class="line"></div><div class="line">var newData=data.foo; //这里进行了一次引用赋值 </div><div class="line">newData(); // 3</div></pre></td></tr></table></figure></p>
-<p>原理：因为newData实际上引用的是foo函数本身，跟data对象没有任何关系,data对象只是一个中间桥梁。而newData就是一个本身不带a属性的对象，自然最后只能把a绑定到全局对象上了。<br><em>1.2传参丢失</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function thisTo()&#123;</div><div class="line">   console.log(this.a);</div><div class="line">&#125;</div><div class="line">var data=&#123;</div><div class="line">    a:2,</div><div class="line">    foo:thisTo //通过属性引用this所在函数 </div><div class="line">&#125;;</div><div class="line">var a=3;//全局属性</div><div class="line"></div><div class="line">setTimeout(data.foo,100);// 3</div></pre></td></tr></table></figure></p>
-<p>原理：setTimeout(fn,delay) { fn(); } 实际上fn是一个参数传递的引用(fn=data.foo)，与引用丢失的原理一样<br><em>1.3 Function.prototype.bind()</em><br>为了解决隐式丢失的问题，ES5提供了bind方法，bind()会返回一个硬编码的新函数，它会把参数设置为this的上下文并调用原始函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function thisTo()&#123;</div><div class="line">   console.log(this.a);</div><div class="line">&#125;</div><div class="line">var data=&#123;</div><div class="line">    a:2</div><div class="line">&#125;; </div><div class="line">var a=3;</div><div class="line">var bar=thisTo.bind(data);</div><div class="line">console.log(bar()); //2</div></pre></td></tr></table></figure></p>
-<p><strong>2.间接引用</strong><br>间接引用是指一个定义对象的方法引用另一个对象存在的方法，这种情况下会使得this进行默认绑定。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function thisTo()&#123;</div><div class="line">   console.log(this.a);</div><div class="line">&#125;</div><div class="line">var data=&#123;</div><div class="line">  a:2,</div><div class="line">  foo:thisTo</div><div class="line">&#125;;</div><div class="line">var newData=&#123;</div><div class="line">  a:3</div><div class="line">&#125;</div><div class="line">var a=4;</div><div class="line">data.foo(); //2</div><div class="line">(newData.foo=data.foo)() //4</div></pre></td></tr></table></figure></p>
-<p>原理：newData.foo=data.foo的返回值是目标函数的引用，因此调用的位置实际上是foo(),根据之前的隐式丢失里面说的原则，这里会应用默认绑定.<br><strong>3.ES6箭头函数</strong><br>ES6的箭头函数在this这块是一个特殊的改进，箭头函数使用了词法作用域取代了传统的this机制，所以箭头函数无法使用上面所说的这些this优先级的原则，注意的是<strong><em>在箭头函数中，是根据外层父亲作用域来决定this的指向问题。</em></strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function thisTo()&#123;</div><div class="line">   setTimeout(function()&#123;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;,100);</div><div class="line">&#125;</div><div class="line">var obj=&#123;</div><div class="line"> a:2</div><div class="line">&#125;</div><div class="line">var a=3;</div><div class="line">thisTo.call(obj); //3</div></pre></td></tr></table></figure></p>
-<p>不用箭头函数，发生隐式丢失，最后的this默认绑定到全局作用域，输出3。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function thisTo()&#123;</div><div class="line">   setTimeout(()=&gt;&#123;</div><div class="line">    console.log(this.a);</div><div class="line">&#125;,100);</div><div class="line">&#125;</div><div class="line">var obj=&#123;</div><div class="line"> a:2</div><div class="line">&#125;</div><div class="line">var a=3;加粗文字</div><div class="line">thisTo.call(obj); //2</div></pre></td></tr></table></figure></p>
-<p>用了箭头函数，不会发生隐式丢失，this绑定到外层父作用域thisTO()，thisTo的被调用者是obj对象，所以最后的this到obj对象中，输出2。</p>
-<p>如果不用箭头函数实现相同的输出，可以采用下面这种方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function thisTo()&#123;</div><div class="line">   var self=this; //在当前作用域中捕获this </div><div class="line">   setTimeout(function()&#123;</div><div class="line">    console.log(self.a); //传入self代替之前的this</div><div class="line">&#125;,100);</div><div class="line">&#125;</div><div class="line">var obj=&#123;</div><div class="line"> a:2</div><div class="line">&#125;</div><div class="line">var a=3;</div><div class="line">thisTo.call(obj); //2</div></pre></td></tr></table></figure></p>
-<p><font size="3"><strong>三.总结：</strong></font><br>this的绑定机制，就是要找到这个函数的直接调用位置，然后应用绑定的四条规则，当出现满足多个规则时，按照优先级的高低决定最终的绑定规则。此外注意几种特殊情况，特别是ES6中的箭头函数。</p>
+<p><font size="3"><strong>一.优先级：new绑定&gt;显式绑定&gt;隐式绑定&gt;默认绑定</strong></font><br><strong>1.new绑定</strong><br>new方式是优先级最高的一种调用方式，也就是说只要是出现new方式来调用一个函数，this肯定会指向new调用函数新创建的对象。</p>
+<pre><code>function() thisTo(a){
+ this.a=a;
+}
+var data=new thisTo(2); //在这里进行了new绑定
+console.log(data.a);  //2
+</code></pre><p><strong>2.显式绑定</strong><br>显示绑定指的是通过call()和apply()方法对函数进行的调用，对this影响的优先级仅次于new绑定。</p>
+<pre><code>function thisTo(){
+   console.log(this.a);
+}
+var data={
+    a:2
+}; 
+thisTo.call(data));  //2
+</code></pre><p><strong>3.隐式绑定</strong><br>隐式绑定是指通过对象的属性进行添加，从而调用this所在函数，该方式的优先级在显示绑定之后。</p>
+<pre><code>function thisTo(){
+   console.log(this.a);
+}
+var data={
+    a:2,
+    foo:thisTo //通过属性引用this所在函数 
+};
+data.foo(); //2
+</code></pre><p><strong>4.默认绑定</strong><br>默认绑定是指当上面这三条绑定规则都不符合时采用的绑定规则，默认绑定会把this默认绑定到全局对象中，是优先级最低的绑定规则</p>
+<pre><code>function thisTo(){
+   console.log(this.a);
+}
+var a=2; //a是全局对象的一个同名属性
+thisTo(); //2
+</code></pre><p><font size="3"><strong>二.this绑定的特殊情况</strong></font><br><strong>1.隐式丢失</strong><br>当进行隐式绑定时，如果进行一次引用赋值或者传参操作，会造成this的丢失，从而最后将this绑定到全局对象中去。<br><em>引用赋值丢失</em></p>
+<pre><code>function thisTo(){
+   console.log(this.a);
+}
+var data={
+    a:2,
+    foo:thisTo //通过属性引用this所在函数 
+};
+var a=3;//全局属性
+
+var newData=data.foo; //这里进行了一次引用赋值 
+newData(); // 3
+</code></pre><p>原理：因为newData实际上引用的是foo函数本身，跟data对象没有任何关系,data对象只是一个中间桥梁。而newData就是一个本身不带a属性的对象，自然最后只能把a绑定到全局对象上了。<br><em>1.2传参丢失</em></p>
+<pre><code>function thisTo(){
+   console.log(this.a);
+}
+var data={
+    a:2,
+    foo:thisTo //通过属性引用this所在函数 
+};
+var a=3;//全局属性
+
+setTimeout(data.foo,100);// 3
+</code></pre><p>原理：setTimeout(fn,delay) { fn(); } 实际上fn是一个参数传递的引用(fn=data.foo)，与引用丢失的原理一样<br><em>1.3 Function.prototype.bind()</em><br>为了解决隐式丢失的问题，ES5提供了bind方法，bind()会返回一个硬编码的新函数，它会把参数设置为this的上下文并调用原始函数。</p>
+<pre><code>function thisTo(){
+   console.log(this.a);
+}
+var data={
+    a:2
+}; 
+var a=3;
+var bar=thisTo.bind(data);
+console.log(bar()); //2
+</code></pre><p><strong>2.间接引用</strong><br>间接引用是指一个定义对象的方法引用另一个对象存在的方法，这种情况下会使得this进行默认绑定。</p>
+<pre><code>function thisTo(){
+   console.log(this.a);
+}
+var data={
+  a:2,
+  foo:thisTo
+};
+var newData={
+  a:3
+}
+var a=4;
+data.foo(); //2
+(newData.foo=data.foo)() //4
+</code></pre><p>原理：newData.foo=data.foo的返回值是目标函数的引用，因此调用的位置实际上是foo(),根据之前的隐式丢失里面说的原则，这里会应用默认绑定.<br><strong>3.ES6箭头函数</strong><br>ES6的箭头函数在this这块是一个特殊的改进，箭头函数使用了词法作用域取代了传统的this机制，所以箭头函数无法使用上面所说的这些this优先级的原则，注意的是<strong><em>在箭头函数中，是根据外层父亲作用域来决定this的指向问题。</em></strong></p>
+<pre><code>function thisTo(){
+   setTimeout(function(){
+    console.log(this.a);
+},100);
+}
+var obj={
+ a:2
+}
+var a=3;
+thisTo.call(obj); //3
+</code></pre><p>不用箭头函数，发生隐式丢失，最后的this默认绑定到全局作用域，输出3。</p>
+<pre><code>function thisTo(){
+   setTimeout(()=&gt;{
+    console.log(this.a);
+},100);
+}
+var obj={
+ a:2
+}
+var a=3;加粗文字
+thisTo.call(obj); //2
+</code></pre><p>用了箭头函数，不会发生隐式丢失，this绑定到外层父作用域thisTO()，thisTo的被调用者是obj对象，所以最后的this到obj对象中，输出2。</p>
+<p>如果不用箭头函数实现相同的输出，可以采用下面这种方式：</p>
+<pre><code>function thisTo(){
+   var self=this; //在当前作用域中捕获this 
+   setTimeout(function(){
+    console.log(self.a); //传入self代替之前的this
+},100);
+}
+var obj={
+ a:2
+}
+var a=3;
+thisTo.call(obj); //2
+</code></pre><p><font size="3"><strong>三.总结：</strong></font><br>this的绑定机制，就是要找到这个函数的直接调用位置，然后应用绑定的四条规则，当出现满足多个规则时，按照优先级的高低决定最终的绑定规则。此外注意几种特殊情况，特别是ES6中的箭头函数。</p>
 <p><font size="3"><strong>四.参考书籍：</strong></font><br>《你不知道的JavaScript上卷》</p>
 ]]></content>
       
@@ -53,17 +152,83 @@
 <blockquote>
 <p>从技术的角度讲，所有的JavaScript函数都是闭包：它们都是对象，它们都关联到作用域链</p>
 </blockquote>
-<p>所有的函数都是闭包因为有一个很大的window全局对象，你写的函数外部有一个默认的全局函数，你所有写的函数都在这个函数内部。<br>从广义上来讲是这样，狭义闭包即上面js高程定义。闭包的三大特性：1.函数嵌套函数 2.函数内部可以引用外部的参数和变量 3.参数和变量不会被垃圾回收机制回收<br>看一个例子<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(a);<span class="comment">//2</span></div><div class="line">  &#125;</div><div class="line">  bar();</div><div class="line">&#125;</div><div class="line">foo();</div></pre></td></tr></table></figure></p>
-<p>从技术上来讲是闭包，但这个例子并不具备闭包的特性，foo()执行后，foo()内部作用域被销毁。<br>下面是一个典型闭包：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(a);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> bar</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> baz = foo();</div><div class="line">baz();</div></pre></td></tr></table></figure></p>
+<p>所有的函数都是闭包因为有一个很大的window全局对象，你写的函数外部有一个默认的全局函数，你所有写的函数都在这个函数内部。<br>从广义上来讲是这样，狭义闭包即上面js高程定义。闭包的三大特性：1.函数嵌套函数 2.函数内部可以引用外部的参数和变量 3.参数和变量不会被垃圾回收机制回收<br>看一个例子</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token keyword">function</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//2</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>从技术上来讲是闭包，但这个例子并不具备闭包的特性，foo()执行后，foo()内部作用域被销毁。<br>下面是一个典型闭包：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token keyword">function</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> bar
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> baz <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">baz</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 <p>这里foo()内部返回bar()函数，函数的特别之处在于可以创建一个独立的作用域，第九行foo()执行返回值复制给变量baz,但bar()并没有被执行，foo()执行后按常理内部作用域被销毁，但由于返回的bar内仍然在引用变量a,因此a不会被销毁，即使执行baz()后bar内的上下文环境中的a活动对象被释放，但foo()内的仍然保留。第一个例子会被销毁的原因是闭包在函数内调用过，它的生命周期会随着父级函数结束被释放。</p>
 <p>如果还是觉得不直观可以看以上两种形式的演化版<br><img src="http://otjhywl32.bkt.clouddn.com/bibao1.png" alt="Alt text">     <img src="http://otjhywl32.bkt.clouddn.com/bibao2.png" alt="Alt text"><br>左边无论执行多少次都是相同的结果，因为每次执行创建新的闭包，每次执行过后内部作用域都被销毁，右边函数中的闭包被父函数当做返回值存储在外部变量中，此时闭包函数的生命周期等于存储其的外部变量的生命周期，并且不会被销毁。</p>
-<p>闭包常见的形式还有以下几种：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">wait</span>(<span class="params">message</span>) </span>&#123;</div><div class="line"></div><div class="line">  setTimeout( <span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>,log(message);</div><div class="line">    &#125;,<span class="number">1000</span>);</div><div class="line">&#125;</div><div class="line">wait( <span class="string">"hello,closure"</span>);</div></pre></td></tr></table></figure></p>
+<p>闭包常见的形式还有以下几种：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">wait</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span> <span class="token keyword">function</span> <span class="token function">timer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">,</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">wait</span><span class="token punctuation">(</span> <span class="token string">"hello,closure"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 <p>由于javascript是单线程的，而setTimeout是异步的，异步操作都会被放到“events loop”异步队列中，因此当wait()执行完后，setTimeout的函数还未执行，里面的函数仍在引用message,所以不会被清除。</p>
-<p>循环和闭包：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++) &#123;</div><div class="line">  setTimeout( <span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(i)</div><div class="line">  &#125;,i*<span class="number">1000</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>结果是以每秒一次的频率输出五次6，上面已经解释了异步，因此当延迟函数执行时，循环已经完成，循环的终止条件是i不在&lt;=5，条件首次成立时i的值是6，循环中的五个函数都被封闭在一个共享的全局作用域中，因此引用的是相同且唯一的i。<br>闭包与变量：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createFunctions</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> result = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>; i++) &#123;</div><div class="line">    result[i] = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">     <span class="keyword">return</span> i;</div><div class="line">    &#125;;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>循环和闭包：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">&lt;=</span><span class="token number">5</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span> <span class="token keyword">function</span> <span class="token function">timer</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>i<span class="token operator">*</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>结果是以每秒一次的频率输出五次6，上面已经解释了异步，因此当延迟函数执行时，循环已经完成，循环的终止条件是i不在&lt;=5，条件首次成立时i的值是6，循环中的五个函数都被封闭在一个共享的全局作用域中，因此引用的是相同且唯一的i。<br>闭包与变量：</p>
+<pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">function</span> <span class="token function">createFunctions</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+   <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">5</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     result<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> i<span class="token punctuation">;</span>
+     <span class="token punctuation">}</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+
+   <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+</code></pre>
 <p>该函数会返回一个函数数组，每个函数都返回5。因为每个函数的作用域链中都保存着createFunctions()函数的活动对象，它们引用的是都是同一个变量i,当createFuntions()函数返回后，变量i的值为5，此时每个函数都引用着保存变量对象i的同一个变量对象，所以在每个函数内部i的值都是5。<br>总结为<strong>闭包只能取得包含函数中任何变量的最后一个值</strong>，闭包保存的是整个变量对象，而不是某个特殊的变量。</p>
-<p>常用以下方法解决此类问题：<br>1.可以通过创建另一个匿名函数强制让闭包符合预期。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createFunctions</span>(<span class="params"></span>) </span>&#123;</div><div class="line"> <span class="keyword">var</span> result = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"></div><div class="line"> <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>; i++) &#123;</div><div class="line">   result[i] = <span class="function"><span class="keyword">function</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">         <span class="keyword">return</span> num;</div><div class="line">      &#125;;</div><div class="line">   &#125;(i)</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="keyword">return</span> result;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
-<p>通过让函数立即执行，使得每个数组的每个函数引用的i与for循环同步,同时js函数参数是按值传递的，所以会将变量i的当前值复制给参数num,实际上数组内存储的函数都是function() { return num },如图<br><img src="http://otjhywl32.bkt.clouddn.com/bibao3.png" alt="Alt text"><br>在内层闭包中<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">         <span class="keyword">return</span> num;</div><div class="line">      &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>常用以下方法解决此类问题：<br>1.可以通过创建另一个匿名函数强制让闭包符合预期。</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">createFunctions</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">5</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   result<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         <span class="token keyword">return</span> num<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+ <span class="token punctuation">}</span>
+
+ <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+</code></pre>
+<p>通过让函数立即执行，使得每个数组的每个函数引用的i与for循环同步,同时js函数参数是按值传递的，所以会将变量i的当前值复制给参数num,实际上数组内存储的函数都是function() { return num },如图<br><img src="http://otjhywl32.bkt.clouddn.com/bibao3.png" alt="Alt text"><br>在内层闭包中</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         <span class="token keyword">return</span> num<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
 <p>由于返回的函数在引用num,外层函数的参数num没有被销毁，因此可以取得当时num值</p>
 <p>2.使用es6 let<br><img src="http://otjhywl32.bkt.clouddn.com/bibao4.png" alt="Alt text"><br>let作用于块级作用域，因此数组中各函数中的i都引用自己块级作用域内的i.</p>
 ]]></content>
@@ -125,8 +290,49 @@
 
 <p>Markdown 支援两种形式的链接语法： 行内 和 参考 两种形式，两种都是使用角括号来把文字转成链接。<br>This is an <a href="http://example.com/" target="_blank" rel="external">example link</a>.</p>
 <p>在一般的段落文字中，你可以使用反引号 ` 来标记代码区段，区段内的 &amp;、&lt; 和 &gt; 都会被自动的转换成 HTML 实体，这项特性让你可以很容易的在代码区段内插入 HTML 码：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.shopcart</span></div><div class="line">    <span class="selector-tag">position</span>: <span class="selector-tag">fixed</span></div><div class="line">    <span class="selector-tag">left</span>: 0</div><div class="line">    <span class="selector-tag">bottom</span>: 0</div><div class="line">    <span class="selector-tag">z-index</span>: 50</div><div class="line">    <span class="selector-tag">width</span>: 100%</div><div class="line">    <span class="selector-tag">height</span>: 48<span class="selector-tag">px</span></div><div class="line">    <span class="selector-class">.content</span></div><div class="line">      <span class="selector-tag">display</span>: <span class="selector-tag">flex</span></div><div class="line">      <span class="selector-tag">background</span>: <span class="selector-id">#141d27</span></div><div class="line">      <span class="selector-tag">font-size</span>: 0</div><div class="line">      <span class="selector-tag">color</span>: <span class="selector-tag">rgba</span>(255, 255, 255, 0<span class="selector-class">.4</span>)</div><div class="line">      <span class="selector-class">.content-left</span></div><div class="line">        <span class="selector-tag">flex</span>: 1</div><div class="line">        <span class="selector-class">.logo-wrapper</span></div><div class="line">          <span class="selector-tag">display</span>: <span class="selector-tag">inline-block</span></div><div class="line">          <span class="selector-tag">position</span>: <span class="selector-tag">relative</span></div><div class="line">          <span class="selector-tag">top</span>: <span class="selector-tag">-10px</span></div><div class="line">          <span class="selector-tag">margin</span>: 0 12<span class="selector-tag">px</span></div><div class="line">          <span class="selector-tag">padding</span>: 6<span class="selector-tag">px</span></div><div class="line">          <span class="selector-tag">width</span>: 56<span class="selector-tag">px</span></div><div class="line">          <span class="selector-tag">height</span>: 56<span class="selector-tag">px</span></div><div class="line">          <span class="selector-tag">box-sizing</span>: <span class="selector-tag">border-box</span></div><div class="line">          <span class="selector-tag">vertical-align</span>: <span class="selector-tag">top</span></div><div class="line">          <span class="selector-tag">border-radius</span>: 50%</div><div class="line">          <span class="selector-tag">background</span>: <span class="selector-id">#141d27</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">computed: &#123;</div><div class="line">      totalPrice() &#123;</div><div class="line">        <span class="keyword">let</span> total = <span class="number">0</span>;</div><div class="line">        <span class="keyword">this</span>.selectFoods.forEach(<span class="function">(<span class="params">food</span>) =&gt;</span> &#123;</div><div class="line">          total += food.price * food.count;</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">return</span> total;</div><div class="line">      &#125;,</div><div class="line">      totalCount() &#123;</div><div class="line">        <span class="keyword">let</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">this</span>.selectFoods.forEach(<span class="function">(<span class="params">food</span>) =&gt;</span> &#123;</div><div class="line">          count += food.count;</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">return</span> count;</div></pre></td></tr></table></figure>]]></content>
+<pre class=" language-css"><code class="language-css"><span class="token number">.</span>shopcart
+    <span class="token property">position</span><span class="token punctuation">:</span> fixed
+    <span class="token property">left</span><span class="token punctuation">:</span> <span class="token number">0</span>
+    <span class="token property">bottom</span><span class="token punctuation">:</span> <span class="token number">0</span>
+    <span class="token property">z-index</span><span class="token punctuation">:</span> <span class="token number">50</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">100%</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">48</span>px
+    <span class="token number">.</span>content
+      <span class="token property">display</span><span class="token punctuation">:</span> flex
+      <span class="token property">background</span><span class="token punctuation">:</span> <span class="token hexcode">#141d27</span>
+      <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">0</span>
+      <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span><span class="token number">255</span>, <span class="token number">255</span>, <span class="token number">255</span>, <span class="token number">0.4</span><span class="token punctuation">)</span>
+      <span class="token number">.</span>content-left
+        <span class="token property">flex</span><span class="token punctuation">:</span> <span class="token number">1</span>
+        <span class="token number">.</span>logo-wrapper
+          <span class="token property">display</span><span class="token punctuation">:</span> inline-block
+          <span class="token property">position</span><span class="token punctuation">:</span> relative
+          <span class="token property">top</span><span class="token punctuation">:</span> -<span class="token number">10</span>px
+          <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span> <span class="token number">12</span>px
+          <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">6</span>px
+          <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">56</span>px
+          <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">56</span>px
+          <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box
+          <span class="token property">vertical-align</span><span class="token punctuation">:</span> top
+          <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">50%</span>
+          <span class="token property">background</span><span class="token punctuation">:</span> <span class="token hexcode">#141d27</span>
+</code></pre>
+<pre class=" language-javascript"><code class="language-javascript">computed<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token function">totalPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> total <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>selectFoods<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>food<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+          total <span class="token operator">+</span><span class="token operator">=</span> food<span class="token punctuation">.</span>price <span class="token operator">*</span> food<span class="token punctuation">.</span>count<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> total<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function">totalCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>selectFoods<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>food<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+          count <span class="token operator">+</span><span class="token operator">=</span> food<span class="token punctuation">.</span>count<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+</code></pre>
+]]></content>
       
         <categories>
             
@@ -149,16 +355,16 @@
   
     
     <entry>
-      <title><![CDATA[tags]]></title>
-      <url>/tags/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title></title>
       <url>/about/about.html</url>
       <content type="html"><![CDATA[<p>姓名：<br>学校：<br>专业：</p>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
     </entry>
     
   

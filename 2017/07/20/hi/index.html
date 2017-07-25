@@ -283,7 +283,7 @@
 
     <!-- Custom Head -->
     
-</head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
     
@@ -514,8 +514,49 @@
 
 <p>Markdown 支援两种形式的链接语法： 行内 和 参考 两种形式，两种都是使用角括号来把文字转成链接。<br>This is an <a href="http://example.com/" target="_blank" rel="external">example link</a>.</p>
 <p>在一般的段落文字中，你可以使用反引号 ` 来标记代码区段，区段内的 &amp;、&lt; 和 &gt; 都会被自动的转换成 HTML 实体，这项特性让你可以很容易的在代码区段内插入 HTML 码：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.shopcart</span></div><div class="line">    <span class="selector-tag">position</span>: <span class="selector-tag">fixed</span></div><div class="line">    <span class="selector-tag">left</span>: 0</div><div class="line">    <span class="selector-tag">bottom</span>: 0</div><div class="line">    <span class="selector-tag">z-index</span>: 50</div><div class="line">    <span class="selector-tag">width</span>: 100%</div><div class="line">    <span class="selector-tag">height</span>: 48<span class="selector-tag">px</span></div><div class="line">    <span class="selector-class">.content</span></div><div class="line">      <span class="selector-tag">display</span>: <span class="selector-tag">flex</span></div><div class="line">      <span class="selector-tag">background</span>: <span class="selector-id">#141d27</span></div><div class="line">      <span class="selector-tag">font-size</span>: 0</div><div class="line">      <span class="selector-tag">color</span>: <span class="selector-tag">rgba</span>(255, 255, 255, 0<span class="selector-class">.4</span>)</div><div class="line">      <span class="selector-class">.content-left</span></div><div class="line">        <span class="selector-tag">flex</span>: 1</div><div class="line">        <span class="selector-class">.logo-wrapper</span></div><div class="line">          <span class="selector-tag">display</span>: <span class="selector-tag">inline-block</span></div><div class="line">          <span class="selector-tag">position</span>: <span class="selector-tag">relative</span></div><div class="line">          <span class="selector-tag">top</span>: <span class="selector-tag">-10px</span></div><div class="line">          <span class="selector-tag">margin</span>: 0 12<span class="selector-tag">px</span></div><div class="line">          <span class="selector-tag">padding</span>: 6<span class="selector-tag">px</span></div><div class="line">          <span class="selector-tag">width</span>: 56<span class="selector-tag">px</span></div><div class="line">          <span class="selector-tag">height</span>: 56<span class="selector-tag">px</span></div><div class="line">          <span class="selector-tag">box-sizing</span>: <span class="selector-tag">border-box</span></div><div class="line">          <span class="selector-tag">vertical-align</span>: <span class="selector-tag">top</span></div><div class="line">          <span class="selector-tag">border-radius</span>: 50%</div><div class="line">          <span class="selector-tag">background</span>: <span class="selector-id">#141d27</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">computed: &#123;</div><div class="line">      totalPrice() &#123;</div><div class="line">        <span class="keyword">let</span> total = <span class="number">0</span>;</div><div class="line">        <span class="keyword">this</span>.selectFoods.forEach(<span class="function">(<span class="params">food</span>) =&gt;</span> &#123;</div><div class="line">          total += food.price * food.count;</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">return</span> total;</div><div class="line">      &#125;,</div><div class="line">      totalCount() &#123;</div><div class="line">        <span class="keyword">let</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">this</span>.selectFoods.forEach(<span class="function">(<span class="params">food</span>) =&gt;</span> &#123;</div><div class="line">          count += food.count;</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">return</span> count;</div></pre></td></tr></table></figure>
+<pre class=" language-css"><code class="language-css"><span class="token number">.</span>shopcart
+    <span class="token property">position</span><span class="token punctuation">:</span> fixed
+    <span class="token property">left</span><span class="token punctuation">:</span> <span class="token number">0</span>
+    <span class="token property">bottom</span><span class="token punctuation">:</span> <span class="token number">0</span>
+    <span class="token property">z-index</span><span class="token punctuation">:</span> <span class="token number">50</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">100%</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">48</span>px
+    <span class="token number">.</span>content
+      <span class="token property">display</span><span class="token punctuation">:</span> flex
+      <span class="token property">background</span><span class="token punctuation">:</span> <span class="token hexcode">#141d27</span>
+      <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token number">0</span>
+      <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span><span class="token number">255</span>, <span class="token number">255</span>, <span class="token number">255</span>, <span class="token number">0.4</span><span class="token punctuation">)</span>
+      <span class="token number">.</span>content-left
+        <span class="token property">flex</span><span class="token punctuation">:</span> <span class="token number">1</span>
+        <span class="token number">.</span>logo-wrapper
+          <span class="token property">display</span><span class="token punctuation">:</span> inline-block
+          <span class="token property">position</span><span class="token punctuation">:</span> relative
+          <span class="token property">top</span><span class="token punctuation">:</span> -<span class="token number">10</span>px
+          <span class="token property">margin</span><span class="token punctuation">:</span> <span class="token number">0</span> <span class="token number">12</span>px
+          <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">6</span>px
+          <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">56</span>px
+          <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">56</span>px
+          <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box
+          <span class="token property">vertical-align</span><span class="token punctuation">:</span> top
+          <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">50%</span>
+          <span class="token property">background</span><span class="token punctuation">:</span> <span class="token hexcode">#141d27</span>
+</code></pre>
+<pre class=" language-javascript"><code class="language-javascript">computed<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token function">totalPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> total <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>selectFoods<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>food<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+          total <span class="token operator">+</span><span class="token operator">=</span> food<span class="token punctuation">.</span>price <span class="token operator">*</span> food<span class="token punctuation">.</span>count<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> total<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function">totalCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>selectFoods<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>food<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+          count <span class="token operator">+</span><span class="token operator">=</span> food<span class="token punctuation">.</span>count<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+</code></pre>
+
     
 
     
