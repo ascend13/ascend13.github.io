@@ -6,14 +6,15 @@
       <title><![CDATA[this总结]]></title>
       <url>/2017/07/25/this%E6%80%BB%E7%BB%93/</url>
       <content type="html"><![CDATA[<p>首先，this的指向问题可以用一句话总结就是：<strong>this总是指向调用该函数的对象</strong>，也就是说this指向谁与函数声明的位置没有关系，只与调用的位置有关。这是判断this的一个大体原则，而具体的小原则按照优先级的不同大致可以分为以下几点：</p>
-<p><font size="3"><strong>一.优先级：new绑定&gt;显式绑定&gt;隐式绑定&gt;默认绑定</strong></font><br><strong>1.new绑定</strong><br>new方式是优先级最高的一种调用方式，也就是说只要是出现new方式来调用一个函数，this肯定会指向new调用函数新创建的对象。</p>
+<p>#一.优先级：new绑定&gt;显式绑定&gt;隐式绑定&gt;默认绑定</p>
+<p>##1.new绑定<br>new方式是优先级最高的一种调用方式，也就是说只要是出现new方式来调用一个函数，this肯定会指向new调用函数新创建的对象。</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token function">thisTo</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">{</span>
  <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token operator">=</span>a<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">var</span> data<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">thisTo</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//在这里进行了new绑定</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//2</span>
 </code></pre>
-<p><strong>2.显式绑定</strong><br>显示绑定指的是通过call()和apply()方法对函数进行的调用，对this影响的优先级仅次于new绑定。</p>
+<p>##2.显式绑定<br>显示绑定指的是通过call()和apply()方法对函数进行的调用，对this影响的优先级仅次于new绑定。</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -22,7 +23,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token punctuation">}</span><span class="token punctuation">;</span> 
 thisTo<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//2</span>
 </code></pre>
-<p><strong>3.隐式绑定</strong><br>隐式绑定是指通过对象的属性进行添加，从而调用this所在函数，该方式的优先级在显示绑定之后。</p>
+<p>##3.隐式绑定<br>隐式绑定是指通过对象的属性进行添加，从而调用this所在函数，该方式的优先级在显示绑定之后。</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -32,14 +33,16 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 data<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//2</span>
 </code></pre>
-<p><strong>4.默认绑定</strong><br>默认绑定是指当上面这三条绑定规则都不符合时采用的绑定规则，默认绑定会把this默认绑定到全局对象中，是优先级最低的绑定规则</p>
+<p>##4.默认绑定<br>默认绑定是指当上面这三条绑定规则都不符合时采用的绑定规则，默认绑定会把this默认绑定到全局对象中，是优先级最低的绑定规则</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">var</span> a<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//a是全局对象的一个同名属性</span>
 <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//2</span>
 </code></pre>
-<p><font size="3"><strong>二.this绑定的特殊情况</strong></font><br><strong>1.隐式丢失</strong><br>当进行隐式绑定时，如果进行一次引用赋值或者传参操作，会造成this的丢失，从而最后将this绑定到全局对象中去。<br><em>引用赋值丢失</em></p>
+<p>#二.this绑定的特殊情况</p>
+<p>##1.隐式丢失<br>当进行隐式绑定时，如果进行一次引用赋值或者传参操作，会造成this的丢失，从而最后将this绑定到全局对象中去。</p>
+<p>###<em>1.1引用赋值丢失</em></p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -52,7 +55,8 @@ data<span class="token punctuation">.</span><span class="token function">foo</sp
 <span class="token keyword">var</span> newData<span class="token operator">=</span>data<span class="token punctuation">.</span>foo<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//这里进行了一次引用赋值 </span>
 <span class="token function">newData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 3</span>
 </code></pre>
-<p>原理：因为newData实际上引用的是foo函数本身，跟data对象没有任何关系,data对象只是一个中间桥梁。而newData就是一个本身不带a属性的对象，自然最后只能把a绑定到全局对象上了。<br><em>1.2传参丢失</em></p>
+<p>原理：因为newData实际上引用的是foo函数本身，跟data对象没有任何关系,data对象只是一个中间桥梁。而newData就是一个本身不带a属性的对象，自然最后只能把a绑定到全局对象上了。</p>
+<p>###<em>1.2传参丢失</em></p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -64,7 +68,8 @@ data<span class="token punctuation">.</span><span class="token function">foo</sp
 
 <span class="token function">setTimeout</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>foo<span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 3</span>
 </code></pre>
-<p>原理：setTimeout(fn,delay) { fn(); } 实际上fn是一个参数传递的引用(fn=data.foo)，与引用丢失的原理一样<br><em>1.3 Function.prototype.bind()</em><br>为了解决隐式丢失的问题，ES5提供了bind方法，bind()会返回一个硬编码的新函数，它会把参数设置为this的上下文并调用原始函数。</p>
+<p>原理：setTimeout(fn,delay) { fn(); } 实际上fn是一个参数传递的引用(fn=data.foo)，与引用丢失的原理一样</p>
+<p>###1.3 Function.prototype.bind()*<br>为了解决隐式丢失的问题，ES5提供了bind方法，bind()会返回一个硬编码的新函数，它会把参数设置为this的上下文并调用原始函数。</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -75,7 +80,7 @@ data<span class="token punctuation">.</span><span class="token function">foo</sp
 <span class="token keyword">var</span> bar<span class="token operator">=</span>thisTo<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//2</span>
 </code></pre>
-<p><strong>2.间接引用</strong><br>间接引用是指一个定义对象的方法引用另一个对象存在的方法，这种情况下会使得this进行默认绑定。</p>
+<p>##2.间接引用<br>间接引用是指一个定义对象的方法引用另一个对象存在的方法，这种情况下会使得this进行默认绑定。</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -90,7 +95,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 data<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//2</span>
 <span class="token punctuation">(</span>newData<span class="token punctuation">.</span>foo<span class="token operator">=</span>data<span class="token punctuation">.</span>foo<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//4</span>
 </code></pre>
-<p>原理：newData.foo=data.foo的返回值是目标函数的引用，因此调用的位置实际上是foo(),根据之前的隐式丢失里面说的原则，这里会应用默认绑定.<br><strong>3.ES6箭头函数</strong><br>ES6的箭头函数在this这块是一个特殊的改进，箭头函数使用了词法作用域取代了传统的this机制，所以箭头函数无法使用上面所说的这些this优先级的原则，注意的是<strong><em>在箭头函数中，是根据外层父亲作用域来决定this的指向问题。</em></strong></p>
+<p>原理：newData.foo=data.foo的返回值是目标函数的引用，因此调用的位置实际上是foo(),根据之前的隐式丢失里面说的原则，这里会应用默认绑定.</p>
+<p>##3.ES6箭头函数<br>ES6的箭头函数在this这块是一个特殊的改进，箭头函数使用了词法作用域取代了传统的this机制，所以箭头函数无法使用上面所说的这些this优先级的原则，注意的是<strong><em>在箭头函数中，是根据外层父亲作用域来决定this的指向问题。</em></strong></p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
    <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -128,7 +134,142 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
 <span class="token keyword">var</span> a<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">;</span>
 thisTo<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//2</span>
 </code></pre>
-<p><font size="3"><strong>三.总结：</strong></font><br>this的绑定机制，就是要找到这个函数的直接调用位置，然后应用绑定的四条规则，当出现满足多个规则时，按照优先级的高低决定最终的绑定规则。此外注意几种特殊情况，特别是ES6中的箭头函数。</p>
+<p>#三.总结：<br>this的绑定机制，就是要找到这个函数的直接调用位置，然后应用绑定的四条规则，当出现满足多个规则时，按照优先级的高低决定最终的绑定规则。此外注意几种特殊情况，特别是ES6中的箭头函数。</p>
+<p>#四.参考书籍：<br>《你不知道的JavaScript上卷》</p>
+]]></content>
+      
+        <categories>
+            
+            <category> javascript </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> javascript </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[this总结]]></title>
+      <url>/2017/07/25/2943533401@qq.com/0A2C680C968B4BB6990C28190D864CBA/this/</url>
+      <content type="html"><![CDATA[<p>首先，this的指向问题可以用一句话总结就是：<strong>this总是指向调用该函数的对象</strong>，也就是说this指向谁与函数声明的位置没有关系，只与调用的位置有关。这是判断this的一个大体原则，而具体的小原则按照优先级的不同大致可以分为以下几点：</p>
+<p><font size="3"><strong>一.优先级：new绑定&gt;显式绑定&gt;隐式绑定&gt;默认绑定</strong></font><br><strong>1.new绑定</strong><br>new方式是优先级最高的一种调用方式，也就是说只要是出现new方式来调用一个函数，this肯定会指向new调用函数新创建的对象。</p>
+<pre><code>function() thisTo(a){
+ this.a=a;
+}
+var data=new thisTo(2); //在这里进行了new绑定
+console.log(data.a);  //2
+</code></pre><p><strong>2.显式绑定</strong><br>显示绑定指的是通过call()和apply()方法对函数进行的调用，对this影响的优先级仅次于new绑定。</p>
+<pre><code>function thisTo(){
+   console.log(this.a);
+}
+var data={
+    a:2
+}; 
+thisTo.call(data));  //2
+</code></pre><p><strong>3.隐式绑定</strong><br>隐式绑定是指通过对象的属性进行添加，从而调用this所在函数，该方式的优先级在显示绑定之后。</p>
+<pre><code>function thisTo(){
+   console.log(this.a);
+}
+var data={
+    a:2,
+    foo:thisTo //通过属性引用this所在函数 
+};
+data.foo(); //2
+</code></pre><p><strong>4.默认绑定</strong><br>默认绑定是指当上面这三条绑定规则都不符合时采用的绑定规则，默认绑定会把this默认绑定到全局对象中，是优先级最低的绑定规则</p>
+<pre><code>function thisTo(){
+   console.log(this.a);
+}
+var a=2; //a是全局对象的一个同名属性
+thisTo(); //2
+</code></pre><p><font size="3"><strong>二.this绑定的特殊情况</strong></font></p>
+<p></p><h2>1.隐式丢失</h2><br>当进行隐式绑定时，如果进行一次引用赋值或者传参操作，会造成this的丢失，从而最后将this绑定到全局对象中去。<br><em>引用赋值丢失</em><p></p>
+<pre><code>function thisTo(){
+   console.log(this.a);
+}
+var data={
+    a:2,
+    foo:thisTo //通过属性引用this所在函数 
+};
+var a=3;//全局属性
+
+var newData=data.foo; //这里进行了一次引用赋值 
+newData(); // 3
+</code></pre><p>原理：因为newData实际上引用的是foo函数本身，跟data对象没有任何关系,data对象只是一个中间桥梁。而newData就是一个本身不带a属性的对象，自然最后只能把a绑定到全局对象上了。<br><em>1.2传参丢失</em></p>
+<pre><code>function thisTo(){
+   console.log(this.a);
+}
+var data={
+    a:2,
+    foo:thisTo //通过属性引用this所在函数 
+};
+var a=3;//全局属性
+
+setTimeout(data.foo,100);// 3
+</code></pre><p>原理：setTimeout(fn,delay) { fn(); } 实际上fn是一个参数传递的引用(fn=data.foo)，与引用丢失的原理一样<br><em>1.3 Function.prototype.bind()</em><br>为了解决隐式丢失的问题，ES5提供了bind方法，bind()会返回一个硬编码的新函数，它会把参数设置为this的上下文并调用原始函数。</p>
+<pre><code>function thisTo(){
+   console.log(this.a);
+}
+var data={
+    a:2
+}; 
+var a=3;
+var bar=thisTo.bind(data);
+console.log(bar()); //2
+</code></pre><p><strong>2.间接引用</strong><br>间接引用是指一个定义对象的方法引用另一个对象存在的方法，这种情况下会使得this进行默认绑定。</p>
+<pre><code>function thisTo(){
+   console.log(this.a);
+}
+var data={
+  a:2,
+  foo:thisTo
+};
+var newData={
+  a:3
+}
+var a=4;
+data.foo(); //2
+(newData.foo=data.foo)() //4
+</code></pre><p>原理：newData.foo=data.foo的返回值是目标函数的引用，因此调用的位置实际上是foo(),根据之前的隐式丢失里面说的原则，这里会应用默认绑定.<br><strong>3.ES6箭头函数</strong><br>ES6的箭头函数在this这块是一个特殊的改进，箭头函数使用了词法作用域取代了传统的this机制，所以箭头函数无法使用上面所说的这些this优先级的原则，注意的是<strong><em>在箭头函数中，是根据外层父亲作用域来决定this的指向问题。</em></strong></p>
+<pre><code>function thisTo(){
+   setTimeout(function(){
+    console.log(this.a);
+},100);
+}
+var obj={
+ a:2
+}
+var a=3;
+thisTo.call(obj); //3
+</code></pre><p>不用箭头函数，发生隐式丢失，最后的this默认绑定到全局作用域，输出3。</p>
+<pre><code>function thisTo(){
+   setTimeout(()=&gt;{
+    console.log(this.a);
+},100);
+}
+var obj={
+ a:2
+}
+var a=3;加粗文字
+thisTo.call(obj); //2
+</code></pre><p>用了箭头函数，不会发生隐式丢失，this绑定到外层父作用域thisTO()，thisTo的被调用者是obj对象，所以最后的this到obj对象中，输出2。</p>
+<p>如果不用箭头函数实现相同的输出，可以采用下面这种方式：</p>
+<pre><code>function thisTo(){
+   var self=this; //在当前作用域中捕获this 
+   setTimeout(function(){
+    console.log(self.a); //传入self代替之前的this
+},100);
+}
+var obj={
+ a:2
+}
+var a=3;
+thisTo.call(obj); //2
+</code></pre><p><font size="3"><strong>三.总结：</strong></font><br>this的绑定机制，就是要找到这个函数的直接调用位置，然后应用绑定的四条规则，当出现满足多个规则时，按照优先级的高低决定最终的绑定规则。此外注意几种特殊情况，特别是ES6中的箭头函数。</p>
 <p><font size="3"><strong>四.参考书籍：</strong></font><br>《你不知道的JavaScript上卷》</p>
 ]]></content>
       
