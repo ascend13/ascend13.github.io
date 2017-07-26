@@ -6,7 +6,8 @@
       <title><![CDATA[this总结]]></title>
       <url>/2017/07/25/this%E6%80%BB%E7%BB%93/</url>
       <content type="html"><![CDATA[<p>首先，this的指向问题可以用一句话总结就是：<strong>this总是指向调用该函数的对象</strong>，也就是说this指向谁与函数声明的位置没有关系，只与调用的位置有关。这是判断this的一个大体原则，而具体的小原则按照优先级的不同大致可以分为以下几点：</p>
-<h2 id="一-优先级：new绑定-gt-显式绑定-gt-隐式绑定-gt-默认绑定"><a href="#一-优先级：new绑定-gt-显式绑定-gt-隐式绑定-gt-默认绑定" class="headerlink" title="一.优先级：new绑定&gt;显式绑定&gt;隐式绑定&gt;默认绑定"></a>一.优先级：new绑定&gt;显式绑定&gt;隐式绑定&gt;默认绑定</h2><h3 id="1-new绑定"><a href="#1-new绑定" class="headerlink" title="1.new绑定"></a>1.new绑定</h3><p>new方式是优先级最高的一种调用方式，也就是说只要是出现new方式来调用一个函数，this肯定会指向new调用函数新创建的对象。</p>
+<h2 id="一-优先级"><a href="#一-优先级" class="headerlink" title="一.优先级"></a>一.优先级</h2><p><strong><em>new绑定&gt;显式绑定&gt;隐式绑定&gt;默认绑定</em></strong></p>
+<h3 id="1-new绑定"><a href="#1-new绑定" class="headerlink" title="1.new绑定"></a>1.new绑定</h3><p>new方式是优先级最高的一种调用方式，也就是说只要是出现new方式来调用一个函数，this肯定会指向new调用函数新创建的对象。</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token function">thisTo</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">{</span>
  <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token operator">=</span>a<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -65,7 +66,7 @@ data<span class="token punctuation">.</span><span class="token function">foo</sp
 <span class="token function">setTimeout</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>foo<span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 3</span>
 </code></pre>
 <p>原理：setTimeout(fn,delay) { fn(); } 实际上fn是一个参数传递的引用(fn=data.foo)，与引用丢失的原理一样</p>
-<h4 id="1-3-Function-prototype-bind"><a href="#1-3-Function-prototype-bind" class="headerlink" title="1.3 Function.prototype.bind()*"></a>1.3 Function.prototype.bind()*</h4><p>为了解决隐式丢失的问题，ES5提供了bind方法，bind()会返回一个硬编码的新函数，它会把参数设置为this的上下文并调用原始函数。</p>
+<h4 id="1-3-Function-prototype-bind"><a href="#1-3-Function-prototype-bind" class="headerlink" title="1.3 Function.prototype.bind()"></a><em>1.3 Function.prototype.bind()</em></h4><p>为了解决隐式丢失的问题，ES5提供了bind方法，bind()会返回一个硬编码的新函数，它会把参数设置为this的上下文并调用原始函数。</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
