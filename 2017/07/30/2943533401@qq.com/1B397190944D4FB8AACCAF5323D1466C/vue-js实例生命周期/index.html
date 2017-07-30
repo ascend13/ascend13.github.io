@@ -12,7 +12,7 @@
     
     <title>
         
-            this总结 | 
+            vue.js实例生命周期 | 
         
         ascend13&#39;s blog
     </title>
@@ -36,7 +36,7 @@
     <meta name="theme-color" content="#0097A7">
     <meta name="author" content="cowboy">
     <meta name="description" itemprop="description" content="life">
-    <meta name="keywords" content="ascend13&#39;s blog,javascript">
+    <meta name="keywords" content="ascend13&#39;s blog">
 
     <!-- Site Verification -->
     
@@ -65,18 +65,18 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="this总结 | ascend13&#39;s blog">
+    <meta property="og:title" content="vue.js实例生命周期 | ascend13&#39;s blog">
     <meta property="og:image" content="/img/favicon.jpg" />
     <meta property="og:description" content="life">
-    <meta property="og:article:tag" content="javascript"> 
+    
 
     
-        <meta property="article:published_time" content="Tue Jul 25 2017 16:21:05 GMT+0800" />
-        <meta property="article:modified_time" content="Wed Jul 26 2017 10:55:57 GMT+0800" />
+        <meta property="article:published_time" content="Sun Jul 30 2017 10:01:57 GMT+0800" />
+        <meta property="article:modified_time" content="Sun Jul 30 2017 10:57:42 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
-    <meta name="twitter:title" content="this总结 | ascend13&#39;s blog">
+    <meta name="twitter:title" content="vue.js实例生命周期 | ascend13&#39;s blog">
     <meta name="twitter:description" content="life">
     <meta name="twitter:image" content="/img/favicon.jpg">
     <meta name="twitter:card" content="summary_large_image" />
@@ -84,7 +84,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/2017/07/25/this总结/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2017/07/30/2943533401@qq.com/1B397190944D4FB8AACCAF5323D1466C/vue-js实例生命周期/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -110,10 +110,10 @@
         },
         "description": "Hi, 你好"
     },
-    "headline": "this总结",
-    "url": "http://yoursite.com/2017/07/25/this总结/index.html",
-    "datePublished": "Tue Jul 25 2017 16:21:05 GMT+0800",
-    "dateModified": "Wed Jul 26 2017 10:55:57 GMT+0800",
+    "headline": "vue.js实例生命周期",
+    "url": "http://yoursite.com/2017/07/30/2943533401@qq.com/1B397190944D4FB8AACCAF5323D1466C/vue-js实例生命周期/index.html",
+    "datePublished": "Sun Jul 30 2017 10:01:57 GMT+0800",
+    "dateModified": "Sun Jul 30 2017 10:57:42 GMT+0800",
     "description": "life",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -331,7 +331,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一-优先级"><span class="post-toc-number">1.</span> <span class="post-toc-text">一.优先级</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-new绑定"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.new绑定</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-显式绑定"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2.显式绑定</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-隐式绑定"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3.隐式绑定</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-默认绑定"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">4.默认绑定</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二-this绑定的特殊情况"><span class="post-toc-number">2.</span> <span class="post-toc-text">二.this绑定的特殊情况</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-隐式丢失"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1.隐式丢失</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-1引用赋值丢失"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">1.1引用赋值丢失</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-2传参丢失"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">1.2传参丢失</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-3-Function-prototype-bind"><span class="post-toc-number">2.1.3.</span> <span class="post-toc-text">1.3 Function.prototype.bind()</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-间接引用"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2.间接引用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-ES6箭头函数"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">3.ES6箭头函数</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三-总结："><span class="post-toc-number">3.</span> <span class="post-toc-text">三.总结：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四-参考书籍："><span class="post-toc-number">4.</span> <span class="post-toc-text">四.参考书籍：</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-生命周期示意图"><span class="post-toc-number">1.</span> <span class="post-toc-text">一.生命周期示意图</span></a></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -356,11 +356,20 @@
                 
     <!-- Paradox Post Header -->
     
-        <!-- Custom Thumbnail -->
-        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(http://otjhywl32.bkt.clouddn.com/bing2.jpg)">
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
     
             <p class="article-headline-p">
-                this总结
+                vue.js实例生命周期
             </p>
         </div>
 
@@ -379,7 +388,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>cowboy</strong>
-        <span>7月 25, 2017</span>
+        <span>7月 30, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -401,7 +410,7 @@
 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
     <li class="mdl-menu__item">在其它设备中阅读本文章</li>
     
-        <img src="https://pan.baidu.com/share/qrcode?w=246&h=246&url=http://yoursite.com/2017/07/25/this总结/">
+        <img src="https://pan.baidu.com/share/qrcode?w=246&h=246&url=http://yoursite.com/2017/07/30/2943533401@qq.com/1B397190944D4FB8AACCAF5323D1466C/vue-js实例生命周期/">
     
 </ul>
     
@@ -414,7 +423,7 @@
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/javascript/">javascript</a>
+        
     </ul>
     
 
@@ -430,7 +439,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=this总结&url=http://yoursite.com/2017/07/25/this总结/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=vue.js实例生命周期&url=http://yoursite.com/2017/07/30/2943533401@qq.com/1B397190944D4FB8AACCAF5323D1466C/vue-js实例生命周期/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -439,7 +448,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=this总结&url=http://yoursite.com/2017/07/25/this总结/index.html&via=cowboy" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=vue.js实例生命周期&url=http://yoursite.com/2017/07/30/2943533401@qq.com/1B397190944D4FB8AACCAF5323D1466C/vue-js实例生命周期/index.html&via=cowboy" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -457,7 +466,7 @@
 
     <!-- Share QQ -->
     
-        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=ascend13&#39;s blog&title=this总结&summary=life&pics=http://yoursite.com/img/favicon.jpg&url=http://yoursite.com/2017/07/25/this总结/index.html" target="_blank">
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=ascend13&#39;s blog&title=vue.js实例生命周期&summary=life&pics=http://yoursite.com/img/favicon.jpg&url=http://yoursite.com/2017/07/30/2943533401@qq.com/1B397190944D4FB8AACCAF5323D1466C/vue-js实例生命周期/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 QQ
             </li>
@@ -475,134 +484,7 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>首先，this的指向问题可以用一句话总结就是：<strong>this总是指向调用该函数的对象</strong>，也就是说this指向谁与函数声明的位置没有关系，只与调用的位置有关。这是判断this的一个大体原则，而具体的小原则按照优先级的不同大致可以分为以下几点：</p>
-<h2 id="一-优先级"><a href="#一-优先级" class="headerlink" title="一.优先级"></a>一.优先级</h2><p><strong><em>new绑定&gt;显式绑定&gt;隐式绑定&gt;默认绑定</em></strong></p>
-<h3 id="1-new绑定"><a href="#1-new绑定" class="headerlink" title="1.new绑定"></a>1.new绑定</h3><p>new方式是优先级最高的一种调用方式，也就是说只要是出现new方式来调用一个函数，this肯定会指向new调用函数新创建的对象。</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token function">thisTo</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">{</span>
- <span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token operator">=</span>a<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> data<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">thisTo</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//在这里进行了new绑定</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//2</span>
-</code></pre>
-<h3 id="2-显式绑定"><a href="#2-显式绑定" class="headerlink" title="2.显式绑定"></a>2.显式绑定</h3><p>显示绑定指的是通过call()和apply()方法对函数进行的调用，对this影响的优先级仅次于new绑定。</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> data<span class="token operator">=</span><span class="token punctuation">{</span>
-    a<span class="token punctuation">:</span><span class="token number">2</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span> 
-thisTo<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//2</span>
-</code></pre>
-<h3 id="3-隐式绑定"><a href="#3-隐式绑定" class="headerlink" title="3.隐式绑定"></a>3.隐式绑定</h3><p>隐式绑定是指通过对象的属性进行添加，从而调用this所在函数，该方式的优先级在显示绑定之后。</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> data<span class="token operator">=</span><span class="token punctuation">{</span>
-    a<span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">,</span>
-    foo<span class="token punctuation">:</span>thisTo <span class="token comment" spellcheck="true">//通过属性引用this所在函数 </span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-data<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//2</span>
-</code></pre>
-<h3 id="4-默认绑定"><a href="#4-默认绑定" class="headerlink" title="4.默认绑定"></a>4.默认绑定</h3><p>默认绑定是指当上面这三条绑定规则都不符合时采用的绑定规则，默认绑定会把this默认绑定到全局对象中，是优先级最低的绑定规则</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> a<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//a是全局对象的一个同名属性</span>
-<span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//2</span>
-</code></pre>
-<h2 id="二-this绑定的特殊情况"><a href="#二-this绑定的特殊情况" class="headerlink" title="二.this绑定的特殊情况"></a>二.this绑定的特殊情况</h2><h3 id="1-隐式丢失"><a href="#1-隐式丢失" class="headerlink" title="1.隐式丢失"></a>1.隐式丢失</h3><p>当进行隐式绑定时，如果进行一次引用赋值或者传参操作，会造成this的丢失，从而最后将this绑定到全局对象中去。</p>
-<h4 id="1-1引用赋值丢失"><a href="#1-1引用赋值丢失" class="headerlink" title="1.1引用赋值丢失"></a><em>1.1引用赋值丢失</em></h4><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> data<span class="token operator">=</span><span class="token punctuation">{</span>
-    a<span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">,</span>
-    foo<span class="token punctuation">:</span>thisTo <span class="token comment" spellcheck="true">//通过属性引用this所在函数 </span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> a<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//全局属性</span>
-
-<span class="token keyword">var</span> newData<span class="token operator">=</span>data<span class="token punctuation">.</span>foo<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//这里进行了一次引用赋值 </span>
-<span class="token function">newData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 3</span>
-</code></pre>
-<p>原理：因为newData实际上引用的是foo函数本身，跟data对象没有任何关系,data对象只是一个中间桥梁。而newData就是一个本身不带a属性的对象，自然最后只能把a绑定到全局对象上了。</p>
-<h4 id="1-2传参丢失"><a href="#1-2传参丢失" class="headerlink" title="1.2传参丢失"></a><em>1.2传参丢失</em></h4><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> data<span class="token operator">=</span><span class="token punctuation">{</span>
-    a<span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">,</span>
-    foo<span class="token punctuation">:</span>thisTo <span class="token comment" spellcheck="true">//通过属性引用this所在函数 </span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> a<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//全局属性</span>
-
-<span class="token function">setTimeout</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>foo<span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 3</span>
-</code></pre>
-<p>原理：setTimeout(fn,delay) { fn(); } 实际上fn是一个参数传递的引用(fn=data.foo)，与引用丢失的原理一样</p>
-<h4 id="1-3-Function-prototype-bind"><a href="#1-3-Function-prototype-bind" class="headerlink" title="1.3 Function.prototype.bind()"></a><em>1.3 Function.prototype.bind()</em></h4><p>为了解决隐式丢失的问题，ES5提供了bind方法，bind()会返回一个硬编码的新函数，它会把参数设置为this的上下文并调用原始函数。</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> data<span class="token operator">=</span><span class="token punctuation">{</span>
-    a<span class="token punctuation">:</span><span class="token number">2</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span> 
-<span class="token keyword">var</span> a<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> bar<span class="token operator">=</span>thisTo<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//2</span>
-</code></pre>
-<h3 id="2-间接引用"><a href="#2-间接引用" class="headerlink" title="2.间接引用"></a>2.间接引用</h3><p>间接引用是指一个定义对象的方法引用另一个对象存在的方法，这种情况下会使得this进行默认绑定。</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> data<span class="token operator">=</span><span class="token punctuation">{</span>
-  a<span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">,</span>
-  foo<span class="token punctuation">:</span>thisTo
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> newData<span class="token operator">=</span><span class="token punctuation">{</span>
-  a<span class="token punctuation">:</span><span class="token number">3</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> a<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">;</span>
-data<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//2</span>
-<span class="token punctuation">(</span>newData<span class="token punctuation">.</span>foo<span class="token operator">=</span>data<span class="token punctuation">.</span>foo<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//4</span>
-</code></pre>
-<p>原理：newData.foo=data.foo的返回值是目标函数的引用，因此调用的位置实际上是foo(),根据之前的隐式丢失里面说的原则，这里会应用默认绑定.</p>
-<h3 id="3-ES6箭头函数"><a href="#3-ES6箭头函数" class="headerlink" title="3.ES6箭头函数"></a>3.ES6箭头函数</h3><p>ES6的箭头函数在this这块是一个特殊的改进，箭头函数使用了词法作用域取代了传统的this机制，所以箭头函数无法使用上面所说的这些this优先级的原则，注意的是<strong><em>在箭头函数中，是根据外层父亲作用域来决定this的指向问题。</em></strong></p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-   <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> obj<span class="token operator">=</span><span class="token punctuation">{</span>
- a<span class="token punctuation">:</span><span class="token number">2</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> a<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">;</span>
-thisTo<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//3</span>
-</code></pre>
-<p>不用箭头函数，发生隐式丢失，最后的this默认绑定到全局作用域，输出3。</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-   <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> obj<span class="token operator">=</span><span class="token punctuation">{</span>
- a<span class="token punctuation">:</span><span class="token number">2</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> a<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">;</span>加粗文字
-thisTo<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//2</span>
-</code></pre>
-<p>用了箭头函数，不会发生隐式丢失，this绑定到外层父作用域thisTO()，thisTo的被调用者是obj对象，所以最后的this到obj对象中，输出2。</p>
-<p>如果不用箭头函数实现相同的输出，可以采用下面这种方式：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">thisTo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-   <span class="token keyword">var</span> self<span class="token operator">=</span><span class="token keyword">this</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//在当前作用域中捕获this </span>
-   <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//传入self代替之前的this</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> obj<span class="token operator">=</span><span class="token punctuation">{</span>
- a<span class="token punctuation">:</span><span class="token number">2</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">var</span> a<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">;</span>
-thisTo<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//2</span>
-</code></pre>
-<h2 id="三-总结："><a href="#三-总结：" class="headerlink" title="三.总结："></a>三.总结：</h2><p>this的绑定机制，就是要找到这个函数的直接调用位置，然后应用绑定的四条规则，当出现满足多个规则时，按照优先级的高低决定最终的绑定规则。此外注意几种特殊情况，特别是ES6中的箭头函数。</p>
-<h2 id="四-参考书籍："><a href="#四-参考书籍：" class="headerlink" title="四.参考书籍："></a>四.参考书籍：</h2><p>《你不知道的JavaScript上卷》</p>
+        <h3 id="一-生命周期示意图"><a href="#一-生命周期示意图" class="headerlink" title="一.生命周期示意图"></a>一.生命周期示意图</h3><p><img src="http://otjhywl32.bkt.clouddn.com/vue.js%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="Alt text"></p>
 
     
 
@@ -655,8 +537,8 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
 
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/2017/07/25/this总结/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://yoursite.com/2017/07/25/this总结/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://yoursite.com/2017/07/30/2943533401@qq.com/1B397190944D4FB8AACCAF5323D1466C/vue-js实例生命周期/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://yoursite.com/2017/07/30/2943533401@qq.com/1B397190944D4FB8AACCAF5323D1466C/vue-js实例生命周期/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
@@ -689,7 +571,7 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/07/30/2943533401@qq.com/9C8A3A21F48F4DAE9FF639C5BBE089E4/vue-js实例生命周期(1)/" id="post_nav-newer" class="prev-content">
+        <a href="/2017/07/30/vue-js实例生命周期/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -703,7 +585,7 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
 
     <!-- Next Nav -->
     
-        <a href="/2017/07/25/2943533401@qq.com/75411D72DF2C43CD9EB3653430CB24FC/this总结/" id="post_nav-older" class="next-content">
+        <a href="/2017/07/30/2943533401@qq.com/9C8A3A21F48F4DAE9FF639C5BBE089E4/vue-js实例生命周期(1)/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
