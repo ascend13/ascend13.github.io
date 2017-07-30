@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="Sun Jul 30 2017 10:01:57 GMT+0800" />
-        <meta property="article:modified_time" content="Sun Jul 30 2017 12:38:43 GMT+0800" />
+        <meta property="article:modified_time" content="Sun Jul 30 2017 12:50:23 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "vue.js实例生命周期",
     "url": "http://yoursite.com/2017/07/30/vue-js实例生命周期/index.html",
     "datePublished": "Sun Jul 30 2017 10:01:57 GMT+0800",
-    "dateModified": "Sun Jul 30 2017 12:38:43 GMT+0800",
+    "dateModified": "Sun Jul 30 2017 12:50:23 GMT+0800",
     "description": "life",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -331,7 +331,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-生命周期示意图"><span class="post-toc-number">1.</span> <span class="post-toc-text">一.生命周期示意图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三-例子"><span class="post-toc-number">2.</span> <span class="post-toc-text">三.例子</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#一-生命周期示意图"><span class="post-toc-number">1.</span> <span class="post-toc-text">一.生命周期示意图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二-生命周期钩子"><span class="post-toc-number">2.</span> <span class="post-toc-text">二.生命周期钩子</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三-例子"><span class="post-toc-number">3.</span> <span class="post-toc-text">三.例子</span></a></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -476,7 +476,7 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <h3 id="一-生命周期示意图"><a href="#一-生命周期示意图" class="headerlink" title="一.生命周期示意图"></a>一.生命周期示意图</h3><p><img src="http://otjhywl32.bkt.clouddn.com/vue.js%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" width="500" height="1200" align="center/"></p>
-<ul>
+<h3 id="二-生命周期钩子"><a href="#二-生命周期钩子" class="headerlink" title="二.生命周期钩子"></a>二.生命周期钩子</h3><ul>
 <li>beforeCreate<br>在实例初始化之后，数据观测(data observer) 和 event/watcher 事件配置之前被调用。</li>
 <li>created<br>实例已经创建完成之后被调用。在这一步，实例已完成以下的配置：数据观测(data observer)，属性和方法的运算， watch/event 事件回调。然而，挂载阶段还没开始，$el 属性目前不可见。</li>
 <li>beforeMount<br>在挂载开始之前被调用：相关的 render 函数首次被调用。<br><strong><em>(你可能有兴趣知道，Vue 的模板实际是编译成了 render 函数。这是一个实现细节，通常不需要关心)</em></strong></li>
@@ -529,8 +529,9 @@
    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'------------------'</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
-结果<br><img src="http://otjhywl32.bkt.clouddn.com/vue.js%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F1.PNG" width="300" height="600"></li>
+结果<br><img src="http://otjhywl32.bkt.clouddn.com/vue.js%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F1.PNG" width="300" height="600"><br>当data发生改变时，会调用beforeUpdate和updated方法<br><img src="http://otjhywl32.bkt.clouddn.com/vue.js%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F2.PNG" width="300" height="400"><br>可见<br>beforeUpdate ：数据更新到dom之前，我们可以看到$el对象已经修改，但是我们页面上dom的数据还没有发生改变<br>updated: dom结构会通过虚拟dom的原则，找到需要更新页面dom结构的最小路径，将改变更新到dom上面，完成更新</li>
 </ul>
+<p>实例销毁<br><img src="http://otjhywl32.bkt.clouddn.com/vue.js%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F3.PNG" width="300" height="300"><br>beforeDestroy,destroed :实例的销毁，<strong>vue实例还是存在的</strong>，只是解绑了事件的监听还有watcher对象数据与view的绑定，即数据驱动</p>
 
     
 
