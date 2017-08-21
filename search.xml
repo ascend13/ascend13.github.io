@@ -6,7 +6,6 @@
       <title><![CDATA[vue双向绑定原理]]></title>
       <url>/2017/08/21/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86/</url>
       <content type="html"><![CDATA[<h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><p>首先需要知道vue实现双向绑定的原理是基于数据劫持的，通过Object.defineProperty()的getter和setter对属性的劫持，并结合订阅/发布模式，当数据变化时对订阅者发出通知，触发订阅者的更新方法来更新视图。</p>
-<p>主要需要实现以下几种功能</p>
 ]]></content>
       
         <categories>
@@ -521,9 +520,9 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
         
         <tags>
             
-            <tag> css </tag>
-            
             <tag> javascript </tag>
+            
+            <tag> css </tag>
             
         </tags>
         
