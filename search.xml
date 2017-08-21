@@ -3,69 +3,8 @@
   
     
     <entry>
-      <title><![CDATA[es6块级作用域踩坑]]></title>
-      <url>/2017/08/04/ES6%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%E8%B8%A9%E5%9D%91%20/</url>
-      <content type="html"><![CDATA[<p>本来以为自己对js作用域这方面已经很了解了，但是看到这样一个简单的问题后，通过查阅却发现这里面其实还有不小的坑。</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'1111'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-    <span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'2222'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>初看好像没什么难度，由于js函数声明提升，，后面声明的foo覆盖第一个，最后打印2222。<br>但实际结果却是这样的<br><img src="http://otjhywl32.bkt.clouddn.com/es6%E4%BD%9C%E7%94%A8%E5%9F%9F%E8%B8%A9%E5%9D%91.PNG"><br>经过查阅资料和博客，发现这个问题其实在ES5和ES6中有着天壤之别，并且浏览器的处理方式和语法规定也不相同。<br>在ES5中是这样规定的</p>
-<blockquote>
-<p>函数只能在顶层作用域和函数作用域之中声明，不能在块级作用域声明</p>
-</blockquote>
-<p>但是es5并没有块级作用域，同时浏览器为了兼容，还是还是支持在块级作用域之中声明函数<br>如果是这样的话不就是最开始分析的那样了吗，实际上自己在测试的时候使用的是chrome浏览器，chrome是支持es6的，es6对块级作用域内的函数声明处理却是这样的</p>
-<blockquote>
-<p>ES6 引入了块级作用域，明确允许在块级作用域之中声明函数。ES6 规定，块级作用域之中，函数声明语句的行为类似于let，在块级作用域之外不可引用。</p>
-</blockquote>
-<p>按照这种规定，理论上输出的也是1111，但为什么是报错<br>原来如果改变了块级作用域内声明的函数的处理规则，显然会对老代码产生很大影响。为了减轻因此产生的不兼容问题，ES6在附录B里面规定，浏览器的实现可以不遵守上面的规定，有自己的行为方式。</p>
-<blockquote>
-<p>-允许在块级作用域内声明函数。<br>-函数声明类似于var，即会提升到全局作用域或函数作用域的头部。<br>-同时，函数声明还会提升到所在的块级作用域的头部。</p>
-</blockquote>
-<p>所以在浏览器的 ES6 环境中，块级作用域内声明的函数，行为类似于var声明的变量<br>由于变量提升，实际代码应该是这样的</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> foo <span class="token operator">=</span> undefined
-<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'1111'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-    <span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'22222'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p><strong>考虑到环境导致的行为差异太大，应该避免在块级作用域内声明函数。如果确实需要，也应该写成函数表达式，而不是函数声明语句。</strong></p>
-<p>参考：阮一峰《ECMAScript6入门》</p>
-]]></content>
-      
-        <categories>
-            
-            <category> javascript </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> javascript </tag>
-            
-            <tag> ES6 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[vue.js实例生命周期]]></title>
-      <url>/2017/07/30/vue-js%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
+      <title><![CDATA[vue双向绑定原理]]></title>
+      <url>/2017/08/21/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86/</url>
       <content type="html"><![CDATA[<h3 id="一-生命周期示意图"><a href="#一-生命周期示意图" class="headerlink" title="一.生命周期示意图"></a>一.生命周期示意图</h3><p><img src="http://otjhywl32.bkt.clouddn.com/vue.js%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" width="500" height="1200" align="center/"></p>
 <h3 id="二-生命周期钩子"><a href="#二-生命周期钩子" class="headerlink" title="二.生命周期钩子"></a>二.生命周期钩子</h3><ul>
 <li>beforeCreate<br>在实例初始化之后，数据观测(data observer) 和 event/watcher 事件配置之前被调用。</li>
@@ -138,13 +77,76 @@
             
             <tag> vue.js </tag>
             
+            <tag> 设计模式 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[es6块级作用域踩坑]]></title>
+      <url>/2017/08/04/ES6%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F%E8%B8%A9%E5%9D%91%20/</url>
+      <content type="html"><![CDATA[<p>本来以为自己对js作用域这方面已经很了解了，但是看到这样一个简单的问题后，通过查阅却发现这里面其实还有不小的坑。</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'1111'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'2222'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>初看好像没什么难度，由于js函数声明提升，，后面声明的foo覆盖第一个，最后打印2222。<br>但实际结果却是这样的<br><img src="http://otjhywl32.bkt.clouddn.com/es6%E4%BD%9C%E7%94%A8%E5%9F%9F%E8%B8%A9%E5%9D%91.PNG"><br>经过查阅资料和博客，发现这个问题其实在ES5和ES6中有着天壤之别，并且浏览器的处理方式和语法规定也不相同。<br>在ES5中是这样规定的</p>
+<blockquote>
+<p>函数只能在顶层作用域和函数作用域之中声明，不能在块级作用域声明</p>
+</blockquote>
+<p>但是es5并没有块级作用域，同时浏览器为了兼容，还是还是支持在块级作用域之中声明函数<br>如果是这样的话不就是最开始分析的那样了吗，实际上自己在测试的时候使用的是chrome浏览器，chrome是支持es6的，es6对块级作用域内的函数声明处理却是这样的</p>
+<blockquote>
+<p>ES6 引入了块级作用域，明确允许在块级作用域之中声明函数。ES6 规定，块级作用域之中，函数声明语句的行为类似于let，在块级作用域之外不可引用。</p>
+</blockquote>
+<p>按照这种规定，理论上输出的也是1111，但为什么是报错<br>原来如果改变了块级作用域内声明的函数的处理规则，显然会对老代码产生很大影响。为了减轻因此产生的不兼容问题，ES6在附录B里面规定，浏览器的实现可以不遵守上面的规定，有自己的行为方式。</p>
+<blockquote>
+<p>-允许在块级作用域内声明函数。<br>-函数声明类似于var，即会提升到全局作用域或函数作用域的头部。<br>-同时，函数声明还会提升到所在的块级作用域的头部。</p>
+</blockquote>
+<p>所以在浏览器的 ES6 环境中，块级作用域内声明的函数，行为类似于var声明的变量<br>由于变量提升，实际代码应该是这样的</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> foo <span class="token operator">=</span> undefined
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'1111'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'22222'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><strong>考虑到环境导致的行为差异太大，应该避免在块级作用域内声明函数。如果确实需要，也应该写成函数表达式，而不是函数声明语句。</strong></p>
+<p>参考：阮一峰《ECMAScript6入门》</p>
+]]></content>
+      
+        <categories>
+            
+            <category> javascript </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> javascript </tag>
+            
+            <tag> ES6 </tag>
+            
         </tags>
         
     </entry>
     
     <entry>
       <title><![CDATA[vue.js实例生命周期]]></title>
-      <url>/2017/07/30/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86/</url>
+      <url>/2017/07/30/vue-js%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
       <content type="html"><![CDATA[<h3 id="一-生命周期示意图"><a href="#一-生命周期示意图" class="headerlink" title="一.生命周期示意图"></a>一.生命周期示意图</h3><p><img src="http://otjhywl32.bkt.clouddn.com/vue.js%E5%AE%9E%E4%BE%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" width="500" height="1200" align="center/"></p>
 <h3 id="二-生命周期钩子"><a href="#二-生命周期钩子" class="headerlink" title="二.生命周期钩子"></a>二.生命周期钩子</h3><ul>
 <li>beforeCreate<br>在实例初始化之后，数据观测(data observer) 和 event/watcher 事件配置之前被调用。</li>
@@ -576,9 +578,9 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
         
         <tags>
             
-            <tag> css </tag>
-            
             <tag> javascript </tag>
+            
+            <tag> css </tag>
             
         </tags>
         
