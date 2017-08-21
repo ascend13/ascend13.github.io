@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="Mon Aug 21 2017 18:07:57 GMT+0800" />
-        <meta property="article:modified_time" content="Mon Aug 21 2017 21:34:03 GMT+0800" />
+        <meta property="article:modified_time" content="Mon Aug 21 2017 21:55:57 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "vue双向绑定原理",
     "url": "http://yoursite.com/2017/08/21/vue双向绑定原理/index.html",
     "datePublished": "Mon Aug 21 2017 18:07:57 GMT+0800",
-    "dateModified": "Mon Aug 21 2017 21:34:03 GMT+0800",
+    "dateModified": "Mon Aug 21 2017 21:55:57 GMT+0800",
     "description": "life",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -331,7 +331,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现思路"><span class="post-toc-number">1.</span> <span class="post-toc-text">实现思路</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现思路"><span class="post-toc-number">1.</span> <span class="post-toc-text">实现思路</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#劫持子节点"><span class="post-toc-number">2.</span> <span class="post-toc-text">劫持子节点</span></a></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -476,6 +476,13 @@
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
         <h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><p>首先需要知道vue实现双向绑定的原理是基于数据劫持的，通过Object.defineProperty()的getter和setter对属性的劫持，并结合订阅/发布模式，当数据变化时对订阅者发出通知，触发订阅者的更新方法来更新视图。</p>
+<h3 id="劫持子节点"><a href="#劫持子节点" class="headerlink" title="劫持子节点"></a>劫持子节点</h3><p>因为我们最终的效果要和原生vue保持一致，vue的模板语法如下</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">v-model</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    {{ text }}
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>通过DocumentFragment（文档片段）最终生成浏览器能够识别的html,可以将DocumentFragment看成一个容器，它可以包含多个子节点，当我们将它插入到 DOM 中时，只有它的子节点会插入目标节点</p>
 
     
 
