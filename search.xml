@@ -3,6 +3,26 @@
   
     
     <entry>
+      <title><![CDATA[字面量创建原型对象的注意事项]]></title>
+      <url>/2017/08/26/%E5%AD%97%E9%9D%A2%E9%87%8F%E5%88%9B%E5%BB%BA%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</url>
+      <content type="html"></content>
+      
+        <categories>
+            
+            <category> javascript </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> javascript </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[vue双向绑定原理]]></title>
       <url>/2017/08/21/vue%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E5%8E%9F%E7%90%86/</url>
       <content type="html"><![CDATA[<p><a href="https://ascend13.github.io/vue.js-Reactivity/" target="_blank" rel="external">预览地址</a></p>
