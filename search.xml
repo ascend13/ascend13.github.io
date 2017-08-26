@@ -38,7 +38,7 @@ Person<span class="token punctuation">.</span>prototype<span class="token punctu
 
 friend<span class="token punctuation">.</span><span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//"hi"</span>
 </code></pre>
-<p>尽管可以随时为原型添加属性和方法，并且修改能够立即在所有对象实例中反映出来，但如果使用对象字面量重写整个原型对象，情况就不一样了。<br><img src="http://otjhywl32.bkt.clouddn.com/%E5%AD%97%E9%9D%A2%E9%87%8F%E5%88%9B%E5%BB%BA%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A12.PNG" alt="Alt text"><br>此时报错并没有找到friend的sayName方法</p>
+<p>尽管可以随时为原型添加属性和方法，并且修改能够立即在所有对象实例中反映出来，但如果使用对象字面量重写整个原型对象，情况就不一样了。<br><img src="http://otjhywl32.bkt.clouddn.com/%E5%AD%97%E9%9D%A2%E9%87%8F%E5%88%9B%E5%BB%BA%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A12.PNG" alt="Alt text"><br>此时报错并没有找到friend的sayName方法，因为当我们使用对象字面量重写原型对象，实际上是创建了一个新的原型对象（通过Object构造函数），并将contructor手动指向Person，而<strong>实例中的[[Prototype]]指针仅指向原型，而不指向构造函数(即指向最初的原型)。</strong>而把原型修改为零一个对象就等于切断了构造函数与最初原型之间的联系。<br>关系如图所示<br><img src="http://otjhywl32.bkt.clouddn.com/%E5%AD%97%E9%9D%A2%E9%87%8F%E5%88%9B%E5%BB%BA%E5%8E%9F%E5%9E%8B%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B93.PNG" alt="Alt text"><br>因此最好是在创建实例之前修改原型</p>
 ]]></content>
       
         <categories>
@@ -742,9 +742,9 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
         
         <tags>
             
-            <tag> javascript </tag>
-            
             <tag> css </tag>
+            
+            <tag> javascript </tag>
             
         </tags>
         
