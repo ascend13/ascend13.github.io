@@ -3,6 +3,28 @@
   
     
     <entry>
+      <title><![CDATA[for in与for of及遍历器Iterator]]></title>
+      <url>/2017/08/28/for-in%E4%B8%8Efor-of%E5%8F%8A%E9%81%8D%E5%8E%86%E5%99%A8Iterator/</url>
+      <content type="html"></content>
+      
+        <categories>
+            
+            <category> javascript </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> javascript </tag>
+            
+            <tag> ES6 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[字面量创建原型对象的注意事项]]></title>
       <url>/2017/08/26/%E5%AD%97%E9%9D%A2%E9%87%8F%E5%88%9B%E5%BB%BA%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</url>
       <content type="html"><![CDATA[<h3 id="constructor指向"><a href="#constructor指向" class="headerlink" title="constructor指向"></a>constructor指向</h3><p>mdn上对于constructor的定义</p>
@@ -742,9 +764,9 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
         
         <tags>
             
-            <tag> css </tag>
-            
             <tag> javascript </tag>
+            
+            <tag> css </tag>
             
         </tags>
         
