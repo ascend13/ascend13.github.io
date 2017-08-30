@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="Wed Aug 30 2017 16:58:39 GMT+0800" />
-        <meta property="article:modified_time" content="Wed Aug 30 2017 20:20:00 GMT+0800" />
+        <meta property="article:modified_time" content="Wed Aug 30 2017 20:49:08 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "javascript深拷贝",
     "url": "http://yoursite.com/2017/08/30/javascript深拷贝/index.html",
     "datePublished": "Wed Aug 30 2017 16:58:39 GMT+0800",
-    "dateModified": "Wed Aug 30 2017 20:20:00 GMT+0800",
+    "dateModified": "Wed Aug 30 2017 20:49:08 GMT+0800",
     "description": "life",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -478,7 +478,35 @@
         <h3 id="基本类型与引用类型"><a href="#基本类型与引用类型" class="headerlink" title="基本类型与引用类型"></a>基本类型与引用类型</h3><p>在JavaScript中，基本类型的是按值复制的，每次复制都是一个副本，各个副本是完全独立的，引用类型的值是按引用复制的，这个值实际上是一个指针，这个指针指向的存储在堆内存中的一个对象，因此无论复制多少份，引用的都是一个对象，更改其中一个所有的引用都会受到影响。</p>
 <p><img src="http://otjhywl32.bkt.clouddn.com/javascript%E6%B7%B1%E6%8B%B7%E8%B4%9D.PNG" alt="javascript深拷贝.PNG"></p>
 <h3 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h3><p>深拷贝与浅拷贝都是针对相对于引用类型的说法，浅拷贝即普通的复制操作（常用的“=”复制），复制的是对内存地址的引用即上面介绍的。而深拷贝则是开辟一块新的内存地址，修改一个对象，不会改变另一个对象。深拷贝是复制变量值，遇到非基本类型时，则递归至基本类型后再复制。</p>
-<h3 id="实现深拷贝的两个方法"><a href="#实现深拷贝的两个方法" class="headerlink" title="实现深拷贝的两个方法"></a>实现深拷贝的两个方法</h3><h4 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h4><pre class=" language-javascript"><code class="language-javascript">
+<h3 id="实现深拷贝的两个方法"><a href="#实现深拷贝的两个方法" class="headerlink" title="实现深拷贝的两个方法"></a>实现深拷贝的两个方法</h3><h4 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h4><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
+      age <span class="token punctuation">:</span>  <span class="token number">18</span><span class="token punctuation">,</span>
+      hobby<span class="token punctuation">:</span>  <span class="token punctuation">[</span><span class="token string">'basketball'</span><span class="token punctuation">,</span><span class="token string">'read'</span><span class="token punctuation">,</span><span class="token string">'travel'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      job<span class="token punctuation">:</span> <span class="token string">'programmer'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">function</span> <span class="token function">deepCopy</span><span class="token punctuation">(</span>src<span class="token punctuation">,</span>dest<span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">var</span> dest <span class="token operator">=</span> dest <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">//如果dest为true将dest赋给dest，否则令其为一个空对象</span>
+      <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token keyword">in</span> src<span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> src<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                      <span class="token keyword">if</span><span class="token punctuation">(</span>src<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>constructor <span class="token operator">===</span> Array<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                      <span class="token comment" spellcheck="true">//为数组时</span>
+                      dest<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+                    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                      <span class="token comment" spellcheck="true">//为对象时</span>
+                      dest<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+                    <span class="token punctuation">}</span>
+                    <span class="token comment" spellcheck="true">//递归</span>
+                    <span class="token function">deepCopy</span><span class="token punctuation">(</span>src<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>dest<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+             <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+               dest<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> src<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+             <span class="token punctuation">}</span>
+         <span class="token punctuation">}</span>
+         <span class="token keyword">return</span> dest
+    <span class="token punctuation">}</span>
+    <span class="token keyword">var</span> Tom <span class="token operator">=</span> <span class="token punctuation">{</span>name<span class="token punctuation">:</span><span class="token string">'Tom'</span><span class="token punctuation">}</span>
+    result <span class="token operator">=</span> <span class="token function">deepCopy</span><span class="token punctuation">(</span>person<span class="token punctuation">,</span>Tom<span class="token punctuation">)</span>
+          result<span class="token punctuation">.</span>hobby<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">"movie"</span><span class="token punctuation">)</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
 </code></pre>
 
     
