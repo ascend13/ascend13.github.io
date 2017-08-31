@@ -16,7 +16,7 @@
 <span class="token function">setName</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">alert</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//"Tom"</span>
 </code></pre>
-<p>按照一般的理解第二次重写name属性会覆盖原先的name，输出应该是”Greg”才对。<br>这个问题其实就是高程书上的原题，高程书的一些地方看了很多遍，但是每次重看都还是会有新的理解，这里理解的关键在于JavaScript函数的参数是按值传递的。<br>之前只是粗泛的了解参数按值传递，但是却并没有搞清楚本质，结合高程书和知乎的这个回答<a href="https://www.zhihu.com/question/27114726/answer/35481766才对这个问题算是真正理解了。" target="_blank" rel="external">https://www.zhihu.com/question/27114726/answer/35481766才对这个问题算是真正理解了。</a></p>
+<p>按照一般的理解第二次重写name属性会覆盖原先的name，输出应该是”Greg”才对。<br>这个问题其实就是高程书上的原题，高程书的一些地方看了很多遍，但是每次重看都还是会有新的理解，这里理解的关键在于JavaScript函数的参数是按值传递的。<br>之前只是粗泛的了解参数按值传递，但是却并没有搞清楚本质，结合高程书和知乎的这个回答<a href="https://www.zhihu.com/question/27114726/answer/35481766" target="_blank" rel="external">链接</a>才对这个问题算是真正理解了。</p>
 ]]></content>
       
         <categories>
@@ -967,16 +967,16 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
   
     
     <entry>
-      <title><![CDATA[tags]]></title>
-      <url>/tags/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title></title>
       <url>/about/about.html</url>
       <content type="html"><![CDATA[<p>关于：<br> 如果有什么建议欢迎<br>  联系方式： QQ 384035991</p>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
     </entry>
     
   
