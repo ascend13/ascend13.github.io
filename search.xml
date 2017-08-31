@@ -17,6 +17,11 @@
 <span class="token function">alert</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//"Tom"</span>
 </code></pre>
 <p>按照一般的理解第二次重写name属性会覆盖原先的name，输出应该是”Greg”才对。<br>这个问题其实就是高程书上的原题，高程书的一些地方看了很多遍，但是每次重看都还是会有新的理解，这里理解的关键在于JavaScript函数的参数是按值传递的。<br>之前只是粗泛的了解参数按值传递，但是却并没有搞清楚本质，结合高程书和知乎的这个回答<a href="https://www.zhihu.com/question/27114726/answer/35481766" target="_blank" rel="external">链接</a>才对这个问题算是真正理解了。</p>
+<h3 id="栈内存与堆内存"><a href="#栈内存与堆内存" class="headerlink" title="栈内存与堆内存"></a>栈内存与堆内存</h3><p>简单类型的值存储在栈内存中，这是因为这些简单类型占据的空间是固定的，所以可将他们存储在较小的内存区域 – 栈中。这样存储便于迅速查寻变量的值。每次复制都是一个单独的副本，之间相互独立</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> num1 <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span> 
+<span class="token keyword">var</span> num2 <span class="token operator">=</span> num1<span class="token punctuation">;</span>
+</code></pre>
+<p>图示<br><img src="http://otjhywl32.bkt.clouddn.com/JavaScript%E5%8F%82%E6%95%B0%E6%8C%89%E5%80%BC%E4%BC%A0%E9%80%92%E7%9A%84%E7%90%86%E8%A7%A31.PNG" alt="Alt text"> </p>
 ]]></content>
       
         <categories>
