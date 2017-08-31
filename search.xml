@@ -30,6 +30,7 @@ obj1<span class="token punctuation">.</span>name <span class="token operator">=<
 </code></pre>
 <p>图示<br><img src="http://otjhywl32.bkt.clouddn.com/JavaScript%E5%8F%82%E6%95%B0%E6%8C%89%E5%80%BC%E4%BC%A0%E9%80%92%E7%9A%84%E7%90%86%E8%A7%A33.PNG" alt="Alt text"></p>
 <h3 id="ECMAScript中所有函数的参数都是按值来传递的"><a href="#ECMAScript中所有函数的参数都是按值来传递的" class="headerlink" title="ECMAScript中所有函数的参数都是按值来传递的"></a>ECMAScript中所有函数的参数都是按值来传递的</h3><p>其实<strong>ECMAScript函数参数实际上是函数的局部变量</strong>，因此本题中将一个对象作为参数传入时，复制了一个指针指向对象在堆内存中的内存地址。按值复制传递上复制了一个指针变量，这个变量是按值传递的。<br>在调用函数内部将一个新的Object赋给obj之前内存情况是这样的：<br><img src="http://otjhywl32.bkt.clouddn.com/JavaScript%E5%8F%82%E6%95%B0%E6%8C%89%E5%80%BC%E4%BC%A0%E9%80%92%E7%9A%84%E7%90%86%E8%A7%A37PNG.PNG" alt="Alt text"><br>如果是按引用传递，就会直接把第一个（也就是变量本身）整个传递进去（就不会有第二格的存在了）<br>再将新的Object赋给obj之后：<br><img src="http://otjhywl32.bkt.clouddn.com/JavaScript%E5%8F%82%E6%95%B0%E6%8C%89%E5%80%BC%E4%BC%A0%E9%80%92%E7%9A%84%E7%90%86%E8%A7%A36.PNG" alt="Alt text"><br>可以看到obj指向新的Object内存地址，而person引用的仍然是原来的Object，并且在函数内部新建的局部对象会在函数执行完毕后销毁，因此打印的name是第一个。</p>
+<h4 id="参考书籍"><a href="#参考书籍" class="headerlink" title="参考书籍"></a>参考书籍</h4><p>《JavaScript高级程序设计》</p>
 ]]></content>
       
         <categories>
@@ -980,16 +981,16 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
   
     
     <entry>
+      <title><![CDATA[tags]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title></title>
       <url>/about/about.html</url>
       <content type="html"><![CDATA[<p>关于：<br> 如果有什么建议欢迎<br>  联系方式： QQ 384035991</p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[tags]]></title>
-      <url>/tags/index.html</url>
-      <content type="html"></content>
     </entry>
     
   
