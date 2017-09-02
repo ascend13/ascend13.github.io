@@ -63,7 +63,7 @@ obj1<span class="token punctuation">.</span>name <span class="token operator">=<
       <span class="token keyword">var</span> dest <span class="token operator">=</span> dest <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">//如果dest为true将dest赋给dest，否则令其为一个空对象</span>
       <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token keyword">in</span> src<span class="token punctuation">)</span><span class="token punctuation">{</span>
       <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> src<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">'object'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                      <span class="token keyword">if</span><span class="token punctuation">(</span>src<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>constructor <span class="token operator">===</span> Array<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                      <span class="token keyword">if</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>src<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'[object Array]'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
                       <span class="token comment" spellcheck="true">//为数组时</span>
                       dest<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
                     <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
@@ -80,8 +80,8 @@ obj1<span class="token punctuation">.</span>name <span class="token operator">=<
     <span class="token punctuation">}</span>
     <span class="token keyword">var</span> Tom <span class="token operator">=</span> <span class="token punctuation">{</span>name<span class="token punctuation">:</span><span class="token string">'Tom'</span><span class="token punctuation">}</span>
     result <span class="token operator">=</span> <span class="token function">deepCopy</span><span class="token punctuation">(</span>person<span class="token punctuation">,</span>Tom<span class="token punctuation">)</span>
-          result<span class="token punctuation">.</span>hobby<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">"movie"</span><span class="token punctuation">)</span>
-          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span>
+    result<span class="token punctuation">.</span>hobby<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">"movie"</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
 </code></pre>
 <p>结果<br><img src="http://otjhywl32.bkt.clouddn.com/JavaScript%E6%B7%B1%E6%8B%B7%E8%B4%9D1.PNG" alt="javascript深拷贝.PNG"></p>
@@ -981,16 +981,16 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
   
     
     <entry>
+      <title><![CDATA[tags]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title></title>
       <url>/about/about.html</url>
       <content type="html"><![CDATA[<p>关于：<br> 如果有什么建议欢迎<br>  联系方式： QQ 384035991</p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[tags]]></title>
-      <url>/tags/index.html</url>
-      <content type="html"></content>
     </entry>
     
   
