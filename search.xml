@@ -3,6 +3,28 @@
   
     
     <entry>
+      <title><![CDATA[详解defer和async]]></title>
+      <url>/2017/09/05/%E8%AF%A6%E8%A7%A3defer%E5%92%8Casync/</url>
+      <content type="html"></content>
+      
+        <categories>
+            
+            <category> html </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> javascript </tag>
+            
+            <tag> 异步 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[JavaScript参数按值传递的理解]]></title>
       <url>/2017/08/31/JavaScript%E5%8F%82%E6%95%B0%E6%8C%89%E5%80%BC%E4%BC%A0%E9%80%92%E7%9A%84%E7%90%86%E8%A7%A3/</url>
       <content type="html"><![CDATA[<p>看到一个这样的问题</p>
@@ -969,9 +991,9 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
         
         <tags>
             
-            <tag> javascript </tag>
-            
             <tag> css </tag>
+            
+            <tag> javascript </tag>
             
         </tags>
         
