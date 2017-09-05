@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="Tue Sep 05 2017 20:47:29 GMT+0800" />
-        <meta property="article:modified_time" content="Tue Sep 05 2017 20:52:35 GMT+0800" />
+        <meta property="article:modified_time" content="Tue Sep 05 2017 21:17:53 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "详解defer和async",
     "url": "http://yoursite.com/2017/09/05/详解defer和async/index.html",
     "datePublished": "Tue Sep 05 2017 20:47:29 GMT+0800",
-    "dateModified": "Tue Sep 05 2017 20:52:35 GMT+0800",
+    "dateModified": "Tue Sep 05 2017 21:17:53 GMT+0800",
     "description": "life",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -331,7 +331,7 @@
 
     
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#页面加载和渲染过程"><span class="post-toc-number">1.</span> <span class="post-toc-text">页面加载和渲染过程</span></a></li></ol>
         <!--
         <li class="mdl-menu__item">
             Some Action
@@ -475,7 +475,18 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        
+        <p>defer和async是script标签的两个属性，用于在不阻塞页面文档解析的前提下，控制脚本的下载和执行。 </p>
+<h3 id="页面加载和渲染过程"><a href="#页面加载和渲染过程" class="headerlink" title="页面加载和渲染过程"></a>页面加载和渲染过程</h3><ol>
+<li>浏览器通过HTTP协议请求服务器，获取HMTL文档并开始从上到下解析，构建DOM； </li>
+<li>在构建DOM过程中，如果遇到外联的样式声明和脚本声明，则暂停文档解析，创建新的网络连接，并开始下载样式文件和脚本文件； </li>
+<li>样式文件下载完成后，构建CSSDOM；脚本文件下载完成后，解释并执行，然后继续解析文档构建DOM </li>
+<li>完成文档解析后，将DOM和CSSDOM进行关联和映射，最后将视图渲染到浏览器窗口<br>在这个过程中，脚本文件的下载和执行是与文档解析同步进行，也就是说，它会阻塞文档的解析，如果控制得不好，在用户体验上就会造成一定程度的影响。<br>所以我们需要清楚的了解和使用defer和async来控制外部脚本的执行。<br>在开发中我们可以在script中声明两个不太常见的属性：defer和async，下面分别解释了他们的用法：<blockquote>
+<p>defer：用于开启新的线程下载脚本文件，并使脚本在文档解析完成后执行。 async<br>async：HTML5新增属性，用于异步下载脚本文件，下载完毕立即解释执行代码。 </p>
+</blockquote>
+</li>
+</ol>
+<p>为了演示脚本的执行情况，进而介绍这两个属性的作用，我们先来搭建一个简单的服务器,项目目录如图所示：<br><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defer%E5%92%8Casync1.png" alt="Alt text"> </p>
+
     
 
     
