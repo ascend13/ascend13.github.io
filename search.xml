@@ -66,7 +66,7 @@ server<span class="token punctuation">.</span><span class="token function">liste
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'listening at port 3000...'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>从上面的代码我们可以看出，当服务器接收到请求之后，会判断请求资源是否为JS，如果是则延迟1s后返回对应的资源。<br>启动这个服务很简单，只需执行node server.js即可，然后就可以在浏览器中输入<a href="http://localhost:3000/js/index.html访问主页了，现在我们来看看index.html中的内容：" target="_blank" rel="external">http://localhost:3000/js/index.html访问主页了，现在我们来看看index.html中的内容：</a></p>
+<p>从上面的代码我们可以看出，当服务器接收到请求之后，会判断请求资源是否为JS，如果是则延迟1s后返回对应的资源。<br>启动这个服务很简单，只需执行node server.js即可，然后就可以在浏览器中输入<a href="http://localhost:3000/js/index.html" target="_blank" rel="external">http://localhost:3000/js/index.html</a> 访问主页了，现在我们来看看index.html中的内容：</p>
 <pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
@@ -1077,16 +1077,16 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
   
     
     <entry>
-      <title><![CDATA[tags]]></title>
-      <url>/tags/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title></title>
       <url>/about/about.html</url>
       <content type="html"><![CDATA[<p>关于：<br> 如果有什么建议欢迎<br>  联系方式： QQ 384035991</p>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
     </entry>
     
   
