@@ -188,7 +188,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>如果有多个声明了async的脚本，其下载和执行也是异步的，不能确保彼此的先后顺序 </li>
 <li>async会在load事件之前执行，但并不能确保与DOMContentLoaded的执行先后顺序</li>
 </ol>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>下面这两张图可以更清楚地阐述defer和async的执行以及和DOMContentLoaded、load事件的关系：<br><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defre%E5%92%8Casync9.PNG" alt="详解defer和async9.PNG"><br>蓝色线代表网络读取，红色线代表执行时间，这俩都是针对脚本的；绿色线代表 HTML 解析。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>总的来说使用defer和async可以节省下载js的时间，下面这两张图可以更清楚地阐述defer和async的执行以及和DOMContentLoaded、load事件的关系：<br><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defre%E5%92%8Casync9.PNG" alt="详解defer和async9.PNG"><br>蓝色线代表网络读取，红色线代表执行时间，这俩都是针对脚本的；绿色线代表 HTML 解析。</p>
 <p><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defre%E5%92%8Casync10.PNG" alt="详解defer和async9.PNG"></p>
 <p>参考文章： <a href="http://blog.csdn.net/liuhe688/article/details/51247484" target="_blank" rel="external">http://blog.csdn.net/liuhe688/article/details/51247484</a></p>
 ]]></content>
@@ -1189,16 +1189,16 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
   
     
     <entry>
-      <title><![CDATA[tags]]></title>
-      <url>/tags/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title></title>
       <url>/about/about.html</url>
       <content type="html"><![CDATA[<p>关于：<br> 如果有什么建议欢迎<br>  联系方式： QQ 384035991</p>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
     </entry>
     
   
