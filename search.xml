@@ -110,7 +110,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token comment" spellcheck="true">// js/2.js</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>再次访问index.html，我们会在控制台中看到下面的执行顺序：<br><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defre%E5%92%8Casync6.PNG" alt="详解defer和async4.PNG"><br>显而易见，1.js被延后致至文档解析完成后执行了，它的执行顺序比body中的<script>还要靠后。与默认的同步解析不同，defer下载外部脚本的不是阻塞的，浏览器会另外开启一个线程，进行网络连接下载，这个过程中，文档解析及构建DOM仍可以继续进行，不会出现因下载脚本而出现的页面空白。<br>关于defer我们需要注意下面几点： </p>
+<p>再次访问index.html，我们会在控制台中看到下面的执行顺序：<br><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defre%E5%92%8Casync6.PNG" alt="详解defer和async4.PNG"><br>显而易见，1.js被延后致至文档解析完成后执行了，它的执行顺序比body中的script还要靠后。与默认的同步解析不同，defer下载外部脚本的不是阻塞的，浏览器会另外开启一个线程，进行网络连接下载，这个过程中，文档解析及构建DOM仍可以继续进行，不会出现因下载脚本而出现的页面空白。<br>关于defer我们需要注意下面几点： </p>
 <ol>
 <li>defer只适用于外联脚本，如果script标签没有指定src属性，只是内联脚本，不要使用defer </li>
 <li>如果有多个声明了defer的脚本，则会按顺序下载和执行 </li>
@@ -190,8 +190,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </ol>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>下面这两张图可以更清楚地阐述defer和async的执行以及和DOMContentLoaded、load事件的关系：<br><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defre%E5%92%8Casync9.PNG" alt="详解defer和async9.PNG"><br>蓝色线代表网络读取，红色线代表执行时间，这俩都是针对脚本的；绿色线代表 HTML 解析。</p>
 <p><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defre%E5%92%8Casync10.PNG" alt="详解defer和async9.PNG"></p>
-<p>参考文章： <a href="http://blog.csdn.net/liuhe688/article/details/51247484">http://blog.csdn.net/liuhe688/article/details/51247484</a></p>
-</script></p>]]></content>
+<p>参考文章： <a href="http://blog.csdn.net/liuhe688/article/details/51247484" target="_blank" rel="external">http://blog.csdn.net/liuhe688/article/details/51247484</a></p>
+]]></content>
       
         <categories>
             
@@ -1189,16 +1189,16 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
   
     
     <entry>
-      <title><![CDATA[tags]]></title>
-      <url>/tags/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title></title>
       <url>/about/about.html</url>
       <content type="html"><![CDATA[<p>关于：<br> 如果有什么建议欢迎<br>  联系方式： QQ 384035991</p>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
     </entry>
     
   
