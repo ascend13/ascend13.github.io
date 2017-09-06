@@ -72,7 +72,7 @@
 
     
         <meta property="article:published_time" content="Tue Sep 05 2017 20:47:29 GMT+0800" />
-        <meta property="article:modified_time" content="Wed Sep 06 2017 17:44:20 GMT+0800" />
+        <meta property="article:modified_time" content="Wed Sep 06 2017 17:51:16 GMT+0800" />
     
 
     <!-- The Twitter Card protocol -->
@@ -113,7 +113,7 @@
     "headline": "详解defer和async",
     "url": "http://yoursite.com/2017/09/05/详解defer和async/index.html",
     "datePublished": "Tue Sep 05 2017 20:47:29 GMT+0800",
-    "dateModified": "Wed Sep 06 2017 17:44:20 GMT+0800",
+    "dateModified": "Wed Sep 06 2017 17:51:16 GMT+0800",
     "description": "life",
     "mainEntityOfPage": {
         "@type": "WebPage",
@@ -650,6 +650,12 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token comment" spellcheck="true">// js/3.js</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+<p><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defre%E5%92%8Casync8.PNG" alt="详解defer和async8.PNG"><br>我们发现，3个脚本的执行是没有顺序的，我们也无法预测每个脚本的下载和执行的时间和顺序。async和defer一样，不会阻塞当前文档的解析，它会异步地下载脚本，但和defer不同的是，async会在脚本下载完成后立即执行，如果项目中脚本之间存在依赖关系，不推荐使用async。<br>关于async，也需要注意以下几点： </p>
+<ol>
+<li>只适用于外联脚本，这一点和defer一致 </li>
+<li>如果有多个声明了async的脚本，其下载和执行也是异步的，不能确保彼此的先后顺序 </li>
+<li>async会在load事件之前执行，但并不能确保与DOMContentLoaded的执行先后顺序</li>
+</ol>
 </script></p>
     
 
