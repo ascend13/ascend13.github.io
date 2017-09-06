@@ -15,7 +15,7 @@
 </blockquote>
 </li>
 </ol>
-<p>为了演示脚本的执行情况，进而介绍这两个属性的作用，我们先来搭建一个简单的服务器,项目目录如图所示：<br><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defer%E5%92%8Casync3.png" alt="Alt text"><br>同时创建了一个简易的Node服务器server.<a href="http://lib.csdn.net/base/javascript" target="_blank" rel="external">js</a><br>，其代码如下：</p>
+<h3 id="普通文档的执行"><a href="#普通文档的执行" class="headerlink" title="普通文档的执行"></a>普通文档的执行</h3><p>为了演示脚本的执行情况，进而介绍这两个属性的作用，我们先来搭建一个简单的服务器,项目目录如图所示：<br><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defer%E5%92%8Casync3.png" alt="Alt text"><br>同时创建了一个简易的Node服务器server.<a href="http://lib.csdn.net/base/javascript" target="_blank" rel="external">js</a><br>，其代码如下：</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -88,7 +88,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>接下来访问主页，看看会发生什么：</p>
-<p><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defer%E5%92%8Casync4.PNG" alt="详解defer和async4.PNG"><br><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defer%E5%92%8Casync5.PNG" alt="详解defer和async4.PNG"><br>从图中可以看到，渲染的过程的确是自上而下，同步进行的，也就是说遇到外部的脚本，就得暂停文档的解析，下载并且解释执行，这种方式是阻塞的，会造成网页空白的现象。<br>现在稍微修改一下代码，将head中的script标签加上defer属性，然后也稍微改动一下两个JS文件：</p>
+<p><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defer%E5%92%8Casync4.PNG" alt="详解defer和async4.PNG"><br><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defer%E5%92%8Casync5.PNG" alt="详解defer和async4.PNG"><br>从图中可以看到，渲染的过程的确是自上而下，同步进行的，也就是说遇到外部的脚本，就得暂停文档的解析，下载并且解释执行，这种方式是阻塞的，会造成网页空白的现象。 </p>
+<h3 id="defer"><a href="#defer" class="headerlink" title="defer"></a>defer</h3><p>现在稍微修改一下代码，将head中的script标签加上defer属性，然后也稍微改动一下两个JS文件：</p>
 <pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
@@ -154,7 +155,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
 </code></pre>
-<p><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defre%E5%92%8Casync7.PNG" alt="详解defer和async4.PNG"><br>可以看到，外联的脚本是按照声明顺序执行的，内联脚本并没有遵守这个规则，另外，DOMContentLoaded和load事件依次被捕获，DOM的状态分别变为interactive和complete。<br>接下来我们介绍一下async属性，为了能够很好的演示执行顺序，我们还需要一些修改：</p>
+<p><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defre%E5%92%8Casync7.PNG" alt="详解defer和async4.PNG"><br>可以看到，外联的脚本是按照声明顺序执行的，内联脚本并没有遵守这个规则，另外，DOMContentLoaded和load事件依次被捕获，DOM的状态分别变为interactive和complete。</p>
+<h3 id="async"><a href="#async" class="headerlink" title="async"></a>async</h3><p>接下来我们介绍一下async属性，为了能够很好的演示执行顺序，我们还需要一些修改：</p>
 <pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
@@ -186,7 +188,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>如果有多个声明了async的脚本，其下载和执行也是异步的，不能确保彼此的先后顺序 </li>
 <li>async会在load事件之前执行，但并不能确保与DOMContentLoaded的执行先后顺序</li>
 </ol>
-<p>下面这两张图可以更清楚地阐述defer和async的执行以及和DOMContentLoaded、load事件的关系：<br><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defre%E5%92%8Casync9.PNG" alt="详解defer和async9.PNG"><br>蓝色线代表网络读取，红色线代表执行时间，这俩都是针对脚本的；绿色线代表 HTML 解析。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>下面这两张图可以更清楚地阐述defer和async的执行以及和DOMContentLoaded、load事件的关系：<br><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defre%E5%92%8Casync9.PNG" alt="详解defer和async9.PNG"><br>蓝色线代表网络读取，红色线代表执行时间，这俩都是针对脚本的；绿色线代表 HTML 解析。</p>
 <p><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defre%E5%92%8Casync10.PNG" alt="详解defer和async9.PNG"></p>
 <p>参考文章： <a href="http://blog.csdn.net/liuhe688/article/details/51247484">http://blog.csdn.net/liuhe688/article/details/51247484</a></p>
 </script></p>]]></content>
@@ -1187,16 +1189,16 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
   
     
     <entry>
+      <title><![CDATA[tags]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title></title>
       <url>/about/about.html</url>
       <content type="html"><![CDATA[<p>关于：<br> 如果有什么建议欢迎<br>  联系方式： QQ 384035991</p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[tags]]></title>
-      <url>/tags/index.html</url>
-      <content type="html"></content>
     </entry>
     
   
