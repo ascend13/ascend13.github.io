@@ -15,7 +15,7 @@
 </blockquote>
 </li>
 </ol>
-<p>为了演示脚本的执行情况，进而介绍这两个属性的作用，我们先来搭建一个简单的服务器,项目目录如图所示：<br><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defer%E5%92%8Casync1.png" alt="Alt text"><br>同时创建了一个简易的Node服务器server.<a href="http://lib.csdn.net/base/javascript" target="_blank" rel="external">js</a><br>，其代码如下：</p>
+<p>为了演示脚本的执行情况，进而介绍这两个属性的作用，我们先来搭建一个简单的服务器,项目目录如图所示：<br><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defer%E5%92%8Casync3.png" alt="Alt text"><br>同时创建了一个简易的Node服务器server.<a href="http://lib.csdn.net/base/javascript" target="_blank" rel="external">js</a><br>，其代码如下：</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -71,6 +71,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>defer-async<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text/css<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>../css/main.css<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>./1.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
@@ -79,6 +80,15 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
 </code></pre>
+<p>在这个HTML文档中，我们先在head中引用了一个外部的脚本文件js/1.js，然后在我们要显示的Hello World后面又引用了一个js/2.js，它们的内容都很简单，就是弹出对应的标示信息：</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// js/1.js</span>
+<span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// js/2.js</span>
+<span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>接下来访问主页，看看会发生什么：</p>
+<p><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defer%E5%92%8Casync4.PNG" alt="详解defer和async4.PNG"><br><img src="http://otjhywl32.bkt.clouddn.com/%E8%AF%A6%E8%A7%A3defer%E5%92%8Casync5.PNG" alt="详解defer和async4.PNG"></p>
 ]]></content>
       
         <categories>
