@@ -367,6 +367,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>String</li>
 <li>TypedArray</li>
 <li>函数的arguments对象</li>
+<li>NodeList对象 </li>
 </ul>
 <p>for of循环首先会向北访问对象请求一个迭代器对象，然后通过调用迭代器对象的next()方法来遍历所有返回值</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -1188,16 +1189,16 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
   
     
     <entry>
+      <title><![CDATA[tags]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title></title>
       <url>/about/about.html</url>
       <content type="html"><![CDATA[<p>关于：<br> 如果有什么建议欢迎<br>  联系方式： QQ 384035991</p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[tags]]></title>
-      <url>/tags/index.html</url>
-      <content type="html"></content>
     </entry>
     
   
