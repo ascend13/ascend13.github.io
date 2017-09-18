@@ -90,7 +90,7 @@
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre>
-<p>通过一个while循环，获取到目标节点后，由于会向上冒泡，将target赋给父节点也就是li，再将各自的内容打印出来，实际上类似递归的</p>
+<p>通过一个while循环，获取到目标节点后，由于会向上冒泡，将target赋给父节点也就是li，再将各自的内容打印出来，实际上类似递归的思想。</p>
 ]]></content>
       
         <categories>
@@ -1297,16 +1297,16 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
   
     
     <entry>
-      <title><![CDATA[tags]]></title>
-      <url>/tags/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title></title>
       <url>/about/about.html</url>
       <content type="html"><![CDATA[<p>关于：<br> 如果有什么建议欢迎<br>  联系方式： QQ 384035991</p>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
     </entry>
     
   
