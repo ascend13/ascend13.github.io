@@ -6,10 +6,67 @@
       <title><![CDATA[angularJs]]></title>
       <url>/2017/10/12/angularJs/</url>
       <content type="html"><![CDATA[<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ul>
+<li>angular.module</li>
 <li>angular.copy</li>
 <li>angular.element</li>
 <li>angular.equals</li>
 <li>angular.forEach</li>
+<li>angular.fromJson</li>
+<li>angular.toJson</li>
+<li>angular.extend</li>
+<li>angular.bind</li>
+<li>angular.isArray</li>
+<li>angular.isDate</li>
+<li>angular.isElement</li>
+<li>angular.isFunction</li>
+<li>angular.isNumber</li>
+<li>angular.isObject</li>
+<li>angular.isString</li>
+<li>angular.isUndefinded</li>
+<li>angular.lowercase</li>
+<li>angular.uppercase</li>
+</ul>
+<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><ul>
+<li>ngApp</li>
+<li>ngBind</li>
+<li>ngBindHtml</li>
+<li>ngBindTemplate</li>
+<li>ngBlur</li>
+<li>ngChange</li>
+<li>ngChecked</li>
+<li>ngClass</li>
+<li>ngClasseven</li>
+<li>ngClassodd</li>
+<li>ngClick</li>
+<li>ngController</li>
+<li>ngCopy</li>
+<li>ngCut</li>
+<li>ngDbclick</li>
+<li>ngDisabled</li>
+<li>ngFocus</li>
+<li>ngHide</li>
+<li>ngHref</li>
+<li>ngIf</li>
+<li>ngInit</li>
+<li>ngKeydown</li>
+<li>ngKeypress</li>
+<li>ngKeyup</li>
+<li>ngModel</li>
+<li>ngMousedown</li>
+<li>ngMouseenter</li>
+<li>ngMouseleave</li>
+<li>ngMouseup</li>
+<li>ngNonbindable</li>
+<li>ngPaste</li>
+<li>ngReadonly</li>
+<li>ngRepeat</li>
+<li>ngSelected</li>
+<li>ngShow</li>
+<li>ngSrc</li>
+<li>ngStyle</li>
+<li>ngSubmit</li>
+<li>ngValue</li>
+<li>ngDirective(还不太熟)</li>
 </ul>
 ]]></content>
       
@@ -1323,16 +1380,16 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
   
     
     <entry>
-      <title><![CDATA[tags]]></title>
-      <url>/tags/index.html</url>
-      <content type="html"></content>
-    </entry>
-    
-    <entry>
       <title></title>
       <url>/about/about.html</url>
       <content type="html"><![CDATA[<p>关于：<br> 如果有什么建议欢迎<br>  联系方式： QQ 384035991</p>
 ]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
     </entry>
     
   
