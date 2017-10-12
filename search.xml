@@ -3,6 +3,26 @@
   
     
     <entry>
+      <title><![CDATA[angularJs]]></title>
+      <url>/2017/10/12/angularJs/</url>
+      <content type="html"></content>
+      
+        <categories>
+            
+            <category> angularJs </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> angularJs </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[js事件委托]]></title>
       <url>/2017/09/15/js%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98/</url>
       <content type="html"><![CDATA[<h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><p>事件委托也叫做事件代理，高程书上的解释为</p>
@@ -1297,16 +1317,16 @@ thisTo<span class="token punctuation">.</span><span class="token function">call<
   
     
     <entry>
+      <title><![CDATA[tags]]></title>
+      <url>/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title></title>
       <url>/about/about.html</url>
       <content type="html"><![CDATA[<p>关于：<br> 如果有什么建议欢迎<br>  联系方式： QQ 384035991</p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[tags]]></title>
-      <url>/tags/index.html</url>
-      <content type="html"></content>
     </entry>
     
   
